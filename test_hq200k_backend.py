@@ -87,5 +87,23 @@ class HQTest(unittest.TestCase):
         self.assertTrue(np.all(b.adaptation[cells]>0))
         self.assertEqual(b.metadata()["adaptation_strength"],0.5)
 
+    def test_budgeted_feedback_coalesces_and_bounds_updates(self):
+        b=HQ200K(plasticity_mode="budgeted",plasticity_budget=.002)
+        rows=np.arange(100,dtype=np.int64)
+        slots=np.zeros(100,dtype=np.int64)
+        old=b.w[rows,slots].copy()
+        for _ in range(10):
+            b.eligibility.append((rows,slots))
+        b.feedback("reward",[19,20,22],20,2,30,False,"test")
+        new=b.w[rows,slots]
+        self.assertEqual(b.updates,100)
+        self.assertEqual(b.plasticity_events,1)
+        self.assertGreater(b.plasticity_l1,0.)
+        self.assertLessEqual(b.plasticity_l1,.00201)
+        np.testing.assert_array_equal(np.sign(new),np.sign(old))
+        b.plasticity=False
+        b.feedback("reward",[23,24,26],20,2,30,False,"test")
+        np.testing.assert_array_equal(b.w[rows,slots],new)
+
 if __name__=="__main__":
     unittest.main()
