@@ -4,6 +4,7 @@ on:
     paths:
       - 'benchmarks/hq200k_causal_probe.py'
       - 'benchmarks/hq200k_gain_sweep.py'
+      - 'benchmarks/hq200k_ei_sweep.py'
       - 'hq200k_backend.py'
       - '.github/workflows/hq200k-causal.yml'
   workflow_dispatch:
@@ -26,10 +27,12 @@ jobs:
       - run: python -m pip install numpy==2.4.6
       - run: PYTHONPATH=. python benchmarks/hq200k_causal_probe.py --output causal-result.json
       - run: PYTHONPATH=. python benchmarks/hq200k_gain_sweep.py --output gain-result.json
+      - run: PYTHONPATH=. python benchmarks/hq200k_ei_sweep.py --output ei-result.json
       - uses: actions/upload-artifact@v4
         with:
           name: hq200k-causal-results
           path: |
             causal-result.json
             gain-result.json
+            ei-result.json
           retention-days: 14
