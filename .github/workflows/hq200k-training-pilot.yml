@@ -1,4 +1,4 @@
-name: HQ200K R13 controlled plasticity pilot
+name: HQ200K R14 fixed interface pilot
 on:
   pull_request:
     paths:
@@ -45,10 +45,10 @@ jobs:
           arm=structured
           rule="$MODE"
           if [ "$MODE" = frozen ]; then arm=frozen; rule=legacy; fi
-          timeout 480s python -u hq200k_doom_smoke.py --arm "$arm" --seed "$SEED" --stimulus-mode rate --excitation-gain 4 --inhibition-gain 8 --adaptation-strength 1 --plasticity-mode "$rule" --plasticity-budget 2 --episode-tics 512 --rollout-steps 64 --batches 4 --output pilot
+          timeout 480s python -u hq200k_doom_smoke.py --arm "$arm" --seed "$SEED" --stimulus-mode rate --excitation-gain 4 --inhibition-gain 8 --adaptation-strength 1 --plasticity-mode "$rule" --plasticity-budget 2 --episode-tics 512 --rollout-steps 64 --batches 4 --fixed-interface --output pilot
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pilot-${{ matrix.mode }}-${{ matrix.seed }}
+          name: fixed-${{ matrix.mode }}-${{ matrix.seed }}
           path: pilot/
           retention-days: 14
