@@ -1,0 +1,1318 @@
+{
+  "source_run": "https://github.com/Garyu-tt/doom-neuron-genesis/actions/runs/46031463295",
+  "scope": "synthetic excitation/inhibition calibration, no gameplay or learning",
+  "summary": {
+    "3.75/3.75": {
+      "trials": 6,
+      "distinct": 3,
+      "both_vs_blank": 2,
+      "mean_l1": 4.666666666666667,
+      "mean_baseline_hz": 17.625206666666667,
+      "max_baseline_peak": 0.21486,
+      "max_stimulated_peak": 0.215045,
+      "mean_late_excess_hz": 0.012289999999998358,
+      "max_late_hz": 18.2795
+    },
+    "3.85/3.85": {
+      "trials": 6,
+      "distinct": 1,
+      "both_vs_blank": 0,
+      "mean_l1": 0.16666666666666666,
+      "mean_baseline_hz": 19.413116666666667,
+      "max_baseline_peak": 0.281285,
+      "max_stimulated_peak": 0.28128,
+      "mean_late_excess_hz": 0.00006833333333252274,
+      "max_late_hz": 25.139960000000006
+    },
+    "3.9/3.9": {
+      "trials": 6,
+      "distinct": 1,
+      "both_vs_blank": 0,
+      "mean_l1": 0.16666666666666666,
+      "mean_baseline_hz": 20.58057833333333,
+      "max_baseline_peak": 0.26839,
+      "max_stimulated_peak": 0.268505,
+      "mean_late_excess_hz": 0.000051666666668263396,
+      "max_late_hz": 25.257579999999997
+    },
+    "4.0/4.0": {
+      "trials": 6,
+      "distinct": 3,
+      "both_vs_blank": 1,
+      "mean_l1": 3.6666666666666665,
+      "mean_baseline_hz": 23.04211083333333,
+      "max_baseline_peak": 0.29185,
+      "max_stimulated_peak": 0.29642,
+      "mean_late_excess_hz": 0.0024483333333324233,
+      "max_late_hz": 25.33264
+    },
+    "4.0/5.0": {
+      "trials": 6,
+      "distinct": 4,
+      "both_vs_blank": 1,
+      "mean_l1": 4.5,
+      "mean_baseline_hz": 22.8350875,
+      "max_baseline_peak": 0.2729,
+      "max_stimulated_peak": 0.272945,
+      "mean_late_excess_hz": 0.001733333333331662,
+      "max_late_hz": 25.089949999999998
+    },
+    "4.0/6.0": {
+      "trials": 6,
+      "distinct": 4,
+      "both_vs_blank": 1,
+      "mean_l1": 3.6666666666666665,
+      "mean_baseline_hz": 22.500024999999994,
+      "max_baseline_peak": 0.25896,
+      "max_stimulated_peak": 0.25951,
+      "mean_late_excess_hz": 0.0018900000000018717,
+      "max_late_hz": 24.760430000000003
+    },
+    "4.0/8.0": {
+      "trials": 6,
+      "distinct": 6,
+      "both_vs_blank": 2,
+      "mean_l1": 7.166666666666667,
+      "mean_baseline_hz": 20.806476666666665,
+      "max_baseline_peak": 0.236275,
+      "max_stimulated_peak": 0.2357,
+      "mean_late_excess_hz": 0.019991666666666557,
+      "max_late_hz": 23.131520000000002
+    },
+    "4.25/6.0": {
+      "trials": 6,
+      "distinct": 1,
+      "both_vs_blank": 0,
+      "mean_l1": 0.16666666666666666,
+      "mean_baseline_hz": 25.832009166666666,
+      "max_baseline_peak": 0.29775,
+      "max_stimulated_peak": 0.29776,
+      "mean_late_excess_hz": 0.057023333333333426,
+      "max_late_hz": 28.41918
+    },
+    "4.25/8.0": {
+      "trials": 6,
+      "distinct": 4,
+      "both_vs_blank": 1,
+      "mean_l1": 1,
+      "mean_baseline_hz": 24.716063333333334,
+      "max_baseline_peak": 0.2746,
+      "max_stimulated_peak": 0.273905,
+      "mean_late_excess_hz": 0.06189666666666582,
+      "max_late_hz": 27.165999999999997
+    },
+    "4.5/8.0": {
+      "trials": 6,
+      "distinct": 5,
+      "both_vs_blank": 2,
+      "mean_l1": 4.833333333333333,
+      "mean_baseline_hz": 28.0048525,
+      "max_baseline_peak": 0.29544,
+      "max_stimulated_peak": 0.29822,
+      "mean_late_excess_hz": 0.14249500000000084,
+      "max_late_hz": 28.84657
+    }
+  },
+  "rows": [
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 3.75,
+      "inh": 3.75,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 18.2615,
+      "baseline_peak": 0.20222,
+      "stimulated_peak": 0.202535,
+      "late_hz": [
+        18.250919999999997,
+        18.250909999999998,
+        18.25091
+      ],
+      "late_excess_hz": 0.000009999999999621423
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 3.75,
+      "inh": 3.75,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.19375,
+      "baseline_peak": 0.21486,
+      "stimulated_peak": 0.215045,
+      "late_hz": [
+        18.21683,
+        18.21701,
+        18.2171
+      ],
+      "late_excess_hz": 0.00026999999999688384
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 3.85,
+      "inh": 3.85,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 18.257295,
+      "baseline_peak": 0.199535,
+      "stimulated_peak": 0.199575,
+      "late_hz": [
+        18.29127,
+        18.2913,
+        18.29129
+      ],
+      "late_excess_hz": 0.00002999999999886427
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 3.85,
+      "inh": 3.85,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.271915,
+      "baseline_peak": 0.20135,
+      "stimulated_peak": 0.201765,
+      "late_hz": [
+        18.29085,
+        18.29091,
+        18.29086
+      ],
+      "late_excess_hz": 0.00006000000000128125
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 3.9,
+      "inh": 3.9,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 18.277185000000003,
+      "baseline_peak": 0.20188,
+      "stimulated_peak": 0.20218,
+      "late_hz": [
+        18.25931,
+        18.25932,
+        18.25931
+      ],
+      "late_excess_hz": 0.000009999999999621423
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 3.9,
+      "inh": 3.9,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.262369999999997,
+      "baseline_peak": 0.1908,
+      "stimulated_peak": 0.19085,
+      "late_hz": [
+        18.28363,
+        18.28352,
+        18.283630000000002
+      ],
+      "late_excess_hz": 0.00010999999999938836
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 4,
+      "inh": 4,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 19.432685000000003,
+      "baseline_peak": 0.25719,
+      "stimulated_peak": 0.25719,
+      "late_hz": [
+        20.624170000000003,
+        20.62411,
+        20.62427
+      ],
+      "late_excess_hz": 0.00009999999999621423
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 4,
+      "inh": 4,
+      "distances": [
+        17,
+        21,
+        20
+      ],
+      "baseline_hz": 24.951365,
+      "baseline_peak": 0.29185,
+      "stimulated_peak": 0.29642,
+      "late_hz": [
+        25.3189,
+        25.33264,
+        25.330579999999998
+      ],
+      "late_excess_hz": 0.013740000000002084
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 4,
+      "inh": 5,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 19.23272,
+      "baseline_peak": 0.25389,
+      "stimulated_peak": 0.2539,
+      "late_hz": [
+        20.35322,
+        20.35252,
+        20.35323
+      ],
+      "late_excess_hz": 0.0007000000000019213
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 4,
+      "inh": 5,
+      "distances": [
+        23,
+        17,
+        24
+      ],
+      "baseline_hz": 24.613609999999998,
+      "baseline_peak": 0.263635,
+      "stimulated_peak": 0.268055,
+      "late_hz": [
+        25.089949999999998,
+        25.0841,
+        25.080740000000002
+      ],
+      "late_excess_hz": 0.009209999999995944
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 4,
+      "inh": 6,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 18.92855,
+      "baseline_peak": 0.25896,
+      "stimulated_peak": 0.25887,
+      "late_hz": [
+        19.99712,
+        19.995910000000002,
+        19.996470000000002
+      ],
+      "late_excess_hz": 0.0012099999999968247
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 4,
+      "inh": 6,
+      "distances": [
+        27,
+        24,
+        19
+      ],
+      "baseline_hz": 24.218499999999995,
+      "baseline_peak": 0.25773,
+      "stimulated_peak": 0.25951,
+      "late_hz": [
+        24.760430000000003,
+        24.757900000000003,
+        24.758110000000002
+      ],
+      "late_excess_hz": 0.0025300000000001432
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 4,
+      "inh": 8,
+      "distances": [
+        1,
+        1,
+        2
+      ],
+      "baseline_hz": 16.607705000000003,
+      "baseline_peak": 0.1685,
+      "stimulated_peak": 0.16859,
+      "late_hz": [
+        16.621409999999997,
+        16.602430000000002,
+        16.62125
+      ],
+      "late_excess_hz": 0.018979999999995556
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 4,
+      "inh": 8,
+      "distances": [
+        36,
+        39,
+        31
+      ],
+      "baseline_hz": 22.54506,
+      "baseline_peak": 0.236275,
+      "stimulated_peak": 0.2357,
+      "late_hz": [
+        23.131520000000002,
+        23.10189,
+        23.10914
+      ],
+      "late_excess_hz": 0.029630000000000933
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 4.25,
+      "inh": 6,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 25.235970000000002,
+      "baseline_peak": 0.26458,
+      "stimulated_peak": 0.26455,
+      "late_hz": [
+        25.3624,
+        25.360550000000003,
+        25.359629999999996
+      ],
+      "late_excess_hz": 0.0027700000000052682
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 4.25,
+      "inh": 6,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 27.291550000000004,
+      "baseline_peak": 0.29775,
+      "stimulated_peak": 0.29776,
+      "late_hz": [
+        28.28989,
+        28.291160000000005,
+        28.289919999999995
+      ],
+      "late_excess_hz": 0.0012700000000052114
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 4.25,
+      "inh": 8,
+      "distances": [
+        0,
+        1,
+        1
+      ],
+      "baseline_hz": 24.130355000000005,
+      "baseline_peak": 0.244555,
+      "stimulated_peak": 0.245205,
+      "late_hz": [
+        24.253390000000003,
+        24.254349999999995,
+        24.2531
+      ],
+      "late_excess_hz": 0.0009599999999920783
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 4.25,
+      "inh": 8,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 26.091464999999996,
+      "baseline_peak": 0.27237,
+      "stimulated_peak": 0.272995,
+      "late_hz": [
+        27.08774,
+        27.06735,
+        27.062689999999996
+      ],
+      "late_excess_hz": 0.02505000000000379
+    },
+    {
+      "seed": 37421,
+      "noise": 3742100,
+      "exc": 4.5,
+      "inh": 8,
+      "distances": [
+        0,
+        1,
+        1
+      ],
+      "baseline_hz": 27.735445000000002,
+      "baseline_peak": 0.283785,
+      "stimulated_peak": 0.28361,
+      "late_hz": [
+        27.83624,
+        27.836409999999994,
+        27.820349999999998
+      ],
+      "late_excess_hz": 0.015890000000002402
+    },
+    {
+      "seed": 37421,
+      "noise": 3742101,
+      "exc": 4.5,
+      "inh": 8,
+      "distances": [
+        0,
+        4,
+        4
+      ],
+      "baseline_hz": 28.347085,
+      "baseline_peak": 0.292995,
+      "stimulated_peak": 0.294825,
+      "late_hz": [
+        28.585500000000003,
+        28.57247,
+        28.756690000000003
+      ],
+      "late_excess_hz": 0.1711899999999993
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 3.75,
+      "inh": 3.75,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.217265,
+      "baseline_peak": 0.19798,
+      "stimulated_peak": 0.19804,
+      "late_hz": [
+        18.20957,
+        18.20959,
+        18.20936
+      ],
+      "late_excess_hz": 0.0002099999999991553
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 3.75,
+      "inh": 3.75,
+      "distances": [
+        22,
+        19,
+        21
+      ],
+      "baseline_hz": 17.364914999999996,
+      "baseline_peak": 0.20684,
+      "stimulated_peak": 0.207035,
+      "late_hz": [
+        18.184749999999998,
+        18.194609999999997,
+        18.19417
+      ],
+      "late_excess_hz": 0.009859999999999758
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 3.85,
+      "inh": 3.85,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.269395000000003,
+      "baseline_peak": 0.20355,
+      "stimulated_peak": 0.20399,
+      "late_hz": [
+        18.243280000000002,
+        18.243280000000002,
+        18.243290000000002
+      ],
+      "late_excess_hz": 0.000009999999999621423
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 3.85,
+      "inh": 3.85,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.194775000000003,
+      "baseline_peak": 0.281285,
+      "stimulated_peak": 0.28128,
+      "late_hz": [
+        25.13995,
+        25.139930000000003,
+        25.139960000000006
+      ],
+      "late_excess_hz": 0.000019999999995690132
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 3.9,
+      "inh": 3.9,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.263110000000005,
+      "baseline_peak": 0.194495,
+      "stimulated_peak": 0.194935,
+      "late_hz": [
+        18.24302,
+        18.243029999999997,
+        18.243029999999997
+      ],
+      "late_excess_hz": 0.000009999999996068709
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 3.9,
+      "inh": 3.9,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.218310000000006,
+      "baseline_peak": 0.266295,
+      "stimulated_peak": 0.26632,
+      "late_hz": [
+        25.197329999999994,
+        25.197330000000008,
+        25.19733
+      ],
+      "late_excess_hz": 1.4210854715202004e-14
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 4,
+      "inh": 4,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.217639999999996,
+      "baseline_peak": 0.282805,
+      "stimulated_peak": 0.28281,
+      "late_hz": [
+        25.156060000000004,
+        25.156060000000004,
+        25.156079999999996
+      ],
+      "late_excess_hz": 0.000019999999992137418
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 4,
+      "inh": 4,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.200825,
+      "baseline_peak": 0.267855,
+      "stimulated_peak": 0.26785,
+      "late_hz": [
+        25.19076,
+        25.190779999999997,
+        25.190850000000005
+      ],
+      "late_excess_hz": 0.00009000000000369823
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 4,
+      "inh": 5,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.011834999999998,
+      "baseline_peak": 0.257115,
+      "stimulated_peak": 0.257125,
+      "late_hz": [
+        25.02121,
+        25.021390000000004,
+        25.021220000000007
+      ],
+      "late_excess_hz": 0.00018000000000384375
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 4,
+      "inh": 5,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.021024999999998,
+      "baseline_peak": 0.26196,
+      "stimulated_peak": 0.261965,
+      "late_hz": [
+        25.037670000000002,
+        25.03781,
+        25.037720000000004
+      ],
+      "late_excess_hz": 0.00013999999999825263
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 4,
+      "inh": 6,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 24.65439,
+      "baseline_peak": 0.253,
+      "stimulated_peak": 0.25316,
+      "late_hz": [
+        24.673409999999997,
+        24.675140000000003,
+        24.6725
+      ],
+      "late_excess_hz": 0.0017300000000055604
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 4,
+      "inh": 6,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 24.686254999999996,
+      "baseline_peak": 0.25445,
+      "stimulated_peak": 0.254715,
+      "late_hz": [
+        24.705750000000002,
+        24.7031,
+        24.70549
+      ],
+      "late_excess_hz": 0.0026500000000027057
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 4,
+      "inh": 8,
+      "distances": [
+        7,
+        0,
+        7
+      ],
+      "baseline_hz": 23.050029999999996,
+      "baseline_peak": 0.23366,
+      "stimulated_peak": 0.233335,
+      "late_hz": [
+        23.09787,
+        23.0617,
+        23.062189999999998
+      ],
+      "late_excess_hz": 0.036170000000002034
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 4,
+      "inh": 8,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 23.06589,
+      "baseline_peak": 0.232655,
+      "stimulated_peak": 0.23274,
+      "late_hz": [
+        23.09595,
+        23.10983,
+        23.102059999999998
+      ],
+      "late_excess_hz": 0.013880000000000337
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 4.25,
+      "inh": 6,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 24.98286,
+      "baseline_peak": 0.252145,
+      "stimulated_peak": 0.25241,
+      "late_hz": [
+        24.98186,
+        24.982919999999996,
+        24.98203
+      ],
+      "late_excess_hz": 0.001059999999995398
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 4.25,
+      "inh": 6,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 27.34003,
+      "baseline_peak": 0.285995,
+      "stimulated_peak": 0.286005,
+      "late_hz": [
+        28.419159999999994,
+        28.418339999999997,
+        28.41918
+      ],
+      "late_excess_hz": 0.0008199999999973784
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 4.25,
+      "inh": 8,
+      "distances": [
+        0,
+        1,
+        1
+      ],
+      "baseline_hz": 23.962239999999998,
+      "baseline_peak": 0.240675,
+      "stimulated_peak": 0.242225,
+      "late_hz": [
+        23.9719,
+        23.963760000000004,
+        23.9856
+      ],
+      "late_excess_hz": 0.013700000000000045
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 4.25,
+      "inh": 8,
+      "distances": [
+        2,
+        0,
+        2
+      ],
+      "baseline_hz": 26.112569999999995,
+      "baseline_peak": 0.2746,
+      "stimulated_peak": 0.273905,
+      "late_hz": [
+        27.165999999999997,
+        27.16144,
+        27.151339999999998
+      ],
+      "late_excess_hz": 0.01465999999999923
+    },
+    {
+      "seed": 37422,
+      "noise": 3742200,
+      "exc": 4.5,
+      "inh": 8,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 26.979565,
+      "baseline_peak": 0.287855,
+      "stimulated_peak": 0.287785,
+      "late_hz": [
+        28.09934,
+        28.098459999999996,
+        27.943289999999998
+      ],
+      "late_excess_hz": 0.15605000000000402
+    },
+    {
+      "seed": 37422,
+      "noise": 3742201,
+      "exc": 4.5,
+      "inh": 8,
+      "distances": [
+        10,
+        1,
+        9
+      ],
+      "baseline_hz": 28.12249,
+      "baseline_peak": 0.28639,
+      "stimulated_peak": 0.288295,
+      "late_hz": [
+        28.26713,
+        28.43886,
+        28.261610000000005
+      ],
+      "late_excess_hz": 0.1717299999999966
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 3.75,
+      "inh": 3.75,
+      "distances": [
+        4,
+        2,
+        6
+      ],
+      "baseline_hz": 15.498445,
+      "baseline_peak": 0.20972,
+      "stimulated_peak": 0.21299,
+      "late_hz": [
+        18.275070000000003,
+        18.211780000000005,
+        18.2795
+      ],
+      "late_excess_hz": 0.06328999999999851
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 3.75,
+      "inh": 3.75,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.215365000000002,
+      "baseline_peak": 0.199815,
+      "stimulated_peak": 0.199815,
+      "late_hz": [
+        18.20358,
+        18.20356,
+        18.203480000000003
+      ],
+      "late_excess_hz": 0.00009999999999621423
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 3.85,
+      "inh": 3.85,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.23094,
+      "baseline_peak": 0.195385,
+      "stimulated_peak": 0.195445,
+      "late_hz": [
+        18.22144,
+        18.221429999999998,
+        18.221600000000002
+      ],
+      "late_excess_hz": 0.0001600000000010482
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 3.85,
+      "inh": 3.85,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.254379999999998,
+      "baseline_peak": 0.191765,
+      "stimulated_peak": 0.192,
+      "late_hz": [
+        18.27006,
+        18.269930000000002,
+        18.27
+      ],
+      "late_excess_hz": 0.0001299999999986312
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 3.9,
+      "inh": 3.9,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.246879999999994,
+      "baseline_peak": 0.198705,
+      "stimulated_peak": 0.19883,
+      "late_hz": [
+        18.22985,
+        18.22984,
+        18.229809999999997
+      ],
+      "late_excess_hz": 0.000040000000002038405
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 3.9,
+      "inh": 3.9,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.215615000000003,
+      "baseline_peak": 0.26839,
+      "stimulated_peak": 0.268505,
+      "late_hz": [
+        25.257469999999998,
+        25.25733,
+        25.257579999999997
+      ],
+      "late_excess_hz": 0.00013999999999825263
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 4,
+      "inh": 4,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 18.273184999999998,
+      "baseline_peak": 0.19529,
+      "stimulated_peak": 0.19534,
+      "late_hz": [
+        18.30342,
+        18.30342,
+        18.30364
+      ],
+      "late_excess_hz": 0.00022000000000232944
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 4,
+      "inh": 4,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 25.176965000000003,
+      "baseline_peak": 0.285885,
+      "stimulated_peak": 0.285885,
+      "late_hz": [
+        25.20705,
+        25.207569999999997,
+        25.20695
+      ],
+      "late_excess_hz": 0.0005199999999980776
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 4,
+      "inh": 5,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 18.123140000000003,
+      "baseline_peak": 0.189435,
+      "stimulated_peak": 0.1897,
+      "late_hz": [
+        18.11715,
+        18.117309999999996,
+        18.117150000000002
+      ],
+      "late_excess_hz": 0.00015999999999749548
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 4,
+      "inh": 5,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 25.008195000000004,
+      "baseline_peak": 0.2729,
+      "stimulated_peak": 0.272945,
+      "late_hz": [
+        25.046630000000004,
+        25.046629999999997,
+        25.046639999999996
+      ],
+      "late_excess_hz": 0.000009999999992515995
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 4,
+      "inh": 6,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 17.83729,
+      "baseline_peak": 0.182875,
+      "stimulated_peak": 0.182885,
+      "late_hz": [
+        17.83484,
+        17.83644,
+        17.833199999999998
+      ],
+      "late_excess_hz": 0.0016400000000018622
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 4,
+      "inh": 6,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 24.675165000000003,
+      "baseline_peak": 0.25402,
+      "stimulated_peak": 0.25403,
+      "late_hz": [
+        24.69164,
+        24.693220000000004,
+        24.6929
+      ],
+      "late_excess_hz": 0.0015800000000041337
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 4,
+      "inh": 8,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 16.57412,
+      "baseline_peak": 0.16747,
+      "stimulated_peak": 0.16792,
+      "late_hz": [
+        16.58411,
+        16.57829,
+        16.5843
+      ],
+      "late_excess_hz": 0.005819999999999936
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 4,
+      "inh": 8,
+      "distances": [
+        1,
+        0,
+        1
+      ],
+      "baseline_hz": 22.996055000000002,
+      "baseline_peak": 0.23444,
+      "stimulated_peak": 0.23443,
+      "late_hz": [
+        23.015449999999998,
+        23.003539999999997,
+        22.999979999999997
+      ],
+      "late_excess_hz": 0.015470000000000539
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 4.25,
+      "inh": 6,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 25.254245000000008,
+      "baseline_peak": 0.273205,
+      "stimulated_peak": 0.27499,
+      "late_hz": [
+        25.35717,
+        25.357499999999998,
+        25.524449999999998
+      ],
+      "late_excess_hz": 0.1672799999999981
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 4.25,
+      "inh": 6,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 24.8874,
+      "baseline_peak": 0.252855,
+      "stimulated_peak": 0.254465,
+      "late_hz": [
+        24.88118,
+        25.05012,
+        24.880619999999997
+      ],
+      "late_excess_hz": 0.1689399999999992
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 4.25,
+      "inh": 8,
+      "distances": [
+        1,
+        1,
+        2
+      ],
+      "baseline_hz": 24.185525000000005,
+      "baseline_peak": 0.24682,
+      "stimulated_peak": 0.24822,
+      "late_hz": [
+        24.291449999999994,
+        24.286320000000003,
+        24.45534
+      ],
+      "late_excess_hz": 0.16389000000000564
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 4.25,
+      "inh": 8,
+      "distances": [
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 23.814224999999997,
+      "baseline_peak": 0.240535,
+      "stimulated_peak": 0.24199,
+      "late_hz": [
+        23.829150000000006,
+        23.98227,
+        23.85483
+      ],
+      "late_excess_hz": 0.15311999999999415
+    },
+    {
+      "seed": 37423,
+      "noise": 3742300,
+      "exc": 4.5,
+      "inh": 8,
+      "distances": [
+        7,
+        0,
+        7
+      ],
+      "baseline_hz": 28.53898,
+      "baseline_peak": 0.29544,
+      "stimulated_peak": 0.29822,
+      "late_hz": [
+        28.67653,
+        28.84657,
+        28.66919
+      ],
+      "late_excess_hz": 0.1700400000000002
+    },
+    {
+      "seed": 37423,
+      "noise": 3742301,
+      "exc": 4.5,
+      "inh": 8,
+      "distances": [
+        5,
+        5,
+        8
+      ],
+      "baseline_hz": 28.305549999999997,
+      "baseline_peak": 0.289955,
+      "stimulated_peak": 0.29163,
+      "late_hz": [
+        28.458160000000003,
+        28.628230000000006,
+        28.447940000000006
+      ],
+      "late_excess_hz": 0.1700700000000026
+    }
+  ]
+}
