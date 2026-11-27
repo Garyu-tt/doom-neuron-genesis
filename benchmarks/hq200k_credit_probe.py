@@ -61,14 +61,16 @@ def train(b,seed,signs=None):
         b.feedback_queue.clear()
     return dict(correct=int(correct),n=len(labels),ties=ties,rewards=rewards)
 
-def main(output):
+def main(output, seed):
     rows=[]
-    for seed in (37421,37422,37423):
+    for seed in (seed,):
         for mode in ("legacy","budgeted","frozen"):
             b=make(seed,mode)
             before=evaluate(b,seed)
             t=train(b,seed)
             after=evaluate(b,seed)
+            if mode=="frozen" and before!=after:
+                raise RuntimeError("frozen paired control differs")
             rows.append(dict(seed=seed,mode=mode,reward="contingent",
                              before=before,training=t,after=after,l1=b.plasticity_l1))
             del b
@@ -88,4 +90,6 @@ def main(output):
 if __name__=="__main__":
     p=argparse.ArgumentParser()
     p.add_argument("--output",type=Path,required=True)
-    main(p.parse_args().output)
+    p.add_argument("--seed",type=int,required=True)
+    args=p.parse_args()
+    main(args.output,args.seed)
