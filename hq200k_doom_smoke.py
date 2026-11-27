@@ -23,7 +23,7 @@ from hq200k_backend import HQ200K
 from training_server import PPOConfig, PPOTrainer
 
 
-def run(arm, seed, output, batches):
+def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1.):
     output.mkdir(parents=True, exist_ok=False)
     random.seed(seed)
     np.random.seed(seed)
@@ -36,7 +36,8 @@ def run(arm, seed, output, batches):
     text = re.sub(r"(?m)^doom_scenario_path\s*=.*$",f"doom_scenario_path = {os.path.relpath(wad, cfg.parent.resolve())}",text)
     text = re.sub(r"(?m)^episode_timeout\s*=.*$","episode_timeout = 128",text)
     cfg.write_text(text)
-    brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled")
+    brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled",
+                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain)
     args = SimpleNamespace(stim_port=12345,spike_port=12346,event_port=12347,
                            feedback_port=12348,max_steps=1000,idle_timeout=30,
                            artifact_wait_ms=50,collect_window_ms=50)
@@ -128,6 +129,8 @@ if __name__=="__main__":
     p.add_argument("--arm",choices=("structured","frozen","shuffled","zero","random"),default="structured")
     p.add_argument("--seed",type=int,default=37421)
     p.add_argument("--batches",type=int,choices=(1,2,3,4),default=2)
+    p.add_argument("--excitation-gain",type=float,default=1.)
+    p.add_argument("--inhibition-gain",type=float,default=1.)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    run(a.arm,a.seed,a.output,a.batches)
+    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain)
