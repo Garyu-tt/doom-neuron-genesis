@@ -2944,7 +2944,7 @@ class PPOTrainer:
         next_tick_time = collection_start_time
 
         try:
-            while step_count < num_steps or not quota_reached:
+            while True:
                 # Check if we've collected enough steps
                 if quota_reached and info.get('episode_reward') is not None:
                     finished_collection = True
@@ -3155,7 +3155,7 @@ class PPOTrainer:
 
         except KeyboardInterrupt:
             print("\n  Collection interrupted by user")
-            if len(observations) == 0:
+            if len(observations) == 0 or getattr(self, 'strict_hardware_collection', False):
                 raise
         except Exception as e:
             traceback.print_exc()

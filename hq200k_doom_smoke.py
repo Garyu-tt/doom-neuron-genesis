@@ -48,6 +48,7 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
                        log_dir=str(output/"tensorboard"),vis_host="127.0.0.1",
                        episode_reset_delay_s=0.0, decoder_ablation_mode="none")
     trainer = PPOTrainer(config, tick_frequency_hz=10, show_window=False, device="cpu")
+    trainer.strict_hardware_collection = True
     trainer.env.game.set_seed(seed)
     trainer.setup_udp_sockets()
     errors=[]
@@ -82,12 +83,15 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
     cpu=time.process_time()
     try:
         for i in range(batches):
+            episodes_before=trainer.total_episodes
             prior=trainer.total_steps
             rx=len(received)
             rollout=trainer._collect_rollouts_hardware(rollout_steps,10)
             actual=trainer.total_steps-prior
             if actual<rollout_steps or len(received)-rx!=actual or errors:
                 raise RuntimeError(f"incomplete rollout: steps={actual}, packets={len(received)-rx}, errors={errors}")
+            if trainer.total_episodes <= episodes_before:
+                raise RuntimeError("rollout ended without a completed episode")
             features=rollout["spike_features"].detach().cpu().numpy()
             trainer.update_policy(rollout)
             progress.append({"batch":i+1,"steps":trainer.total_steps,"episodes":trainer.total_episodes,
