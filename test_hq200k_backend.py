@@ -77,5 +77,15 @@ class HQTest(unittest.TestCase):
         b.stimulate([40.]*8,[2.]*8,GROUPS,50,50)
         self.assertEqual(b.input_pulses.tolist(),[2]*8)
 
+    def test_adaptation_rises_and_decays(self):
+        b=HQ200K(plasticity=False,adaptation_strength=0.5)
+        cells=b.electrodes[8]
+        b._tick({8:2.})
+        np.testing.assert_allclose(b.adaptation[cells],0.5)
+        b._tick({})
+        self.assertTrue(np.all(b.adaptation[cells]<0.5))
+        self.assertTrue(np.all(b.adaptation[cells]>0))
+        self.assertEqual(b.metadata()["adaptation_strength"],0.5)
+
 if __name__=="__main__":
     unittest.main()
