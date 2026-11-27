@@ -64,6 +64,7 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
         trainer.policy.eval()
         trainer.policy.requires_grad_(False)
     initial_policy_hash=policy_hash(trainer.policy)
+    initial_weight_hash=hashlib.sha256(brain.w.tobytes()).hexdigest()
     trainer.strict_hardware_collection = True
     trainer.env.game.set_seed(seed)
     trainer.setup_udp_sockets()
@@ -113,7 +114,8 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
                 trainer.update_policy(rollout)
             elif policy_hash(trainer.policy)!=initial_policy_hash:
                 raise RuntimeError("fixed interface state changed")
-            progress.append({"batch":i+1,"steps":trainer.total_steps,"episodes":trainer.total_episodes,
+            progress.append({"neural_weight_sha256":hashlib.sha256(brain.w.tobytes()).hexdigest(),
+                             "plasticity_l1":brain.plasticity_l1,"batch":i+1,"steps":trainer.total_steps,"episodes":trainer.total_episodes,
                              "episode_rewards":list(trainer.episode_rewards),
                              "episode_lengths":list(trainer.episode_lengths),
                              "killcounts":list(trainer.episode_killcounts),
@@ -123,7 +125,10 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
         thread.join(5)
         if thread.is_alive() or errors or brain.steps!=len(received):
             raise RuntimeError(f"bridge did not complete cleanly: {errors}, {brain.steps}/{len(received)}")
-        result={"status":"smoke_only" if batches<=4 and episode_tics==128 else "bounded_training_pilot","arm":arm,"seed":seed,
+        final_weight_hash=hashlib.sha256(brain.w.tobytes()).hexdigest()
+        if arm=="frozen" and final_weight_hash!=initial_weight_hash:
+            raise RuntimeError("frozen neural weights changed")
+        result={"initial_neural_weights_sha256":initial_weight_hash,"final_neural_weights_sha256":final_weight_hash,"status":"smoke_only" if batches<=4 and episode_tics==128 else "bounded_training_pilot","arm":arm,"seed":seed,
                 "scenario_sha256":hashlib.sha256(wad.read_bytes()).hexdigest(),
                 "original_config_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),
                 "episode_timeout_tics":episode_tics,"rollout_steps_min":rollout_steps,"vizdoom":vizdoom.__version__,
