@@ -1,8 +1,6 @@
 name: HQ200K R19 interface verification
 on:
-  push:
-    branches:
-      - 'exp/hq200k-r19-electrode-interface'
+  pull_request:
     paths:
       - 'hq200k_backend.py'
       - 'hq200k_doom_smoke.py'
