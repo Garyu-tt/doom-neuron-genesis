@@ -33,7 +33,7 @@ def run(arm, seed, output, batches):
     wad = source.with_name("progressive_deathmatch.wad")
     cfg = output / "smoke.cfg"
     text = source.read_text()
-    text = re.sub(r"(?m)^doom_scenario_path\s*=.*$",f"doom_scenario_path = {wad}",text)
+    text = re.sub(r"(?m)^doom_scenario_path\s*=.*$",f"doom_scenario_path = {os.path.relpath(wad, cfg.parent.resolve())}",text)
     text = re.sub(r"(?m)^episode_timeout\s*=.*$","episode_timeout = 128",text)
     cfg.write_text(text)
     brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled")
