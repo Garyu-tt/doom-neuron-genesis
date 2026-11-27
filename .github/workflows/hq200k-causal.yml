@@ -1,0 +1,31 @@
+name: HQ200K causal calibration
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/hq200k_causal_probe.py'
+      - 'hq200k_backend.py'
+      - '.github/workflows/hq200k-causal.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.4.6
+      - run: PYTHONPATH=. python benchmarks/hq200k_causal_probe.py --output causal-result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hq200k-causal-results
+          path: causal-result.json
+          retention-days: 14
