@@ -5,6 +5,7 @@ on:
       - 'benchmarks/hq200k_causal_probe.py'
       - 'benchmarks/hq200k_gain_sweep.py'
       - 'benchmarks/hq200k_ei_sweep.py'
+      - 'benchmarks/hq200k_generalization.py'
       - 'hq200k_backend.py'
       - '.github/workflows/hq200k-causal.yml'
   workflow_dispatch:
@@ -13,7 +14,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     env:
       OMP_NUM_THREADS: '1'
       OPENBLAS_NUM_THREADS: '1'
@@ -28,6 +29,7 @@ jobs:
       - run: PYTHONPATH=. python benchmarks/hq200k_causal_probe.py --output causal-result.json
       - run: PYTHONPATH=. python benchmarks/hq200k_gain_sweep.py --output gain-result.json
       - run: PYTHONPATH=. python benchmarks/hq200k_ei_sweep.py --output ei-result.json
+      - run: PYTHONPATH=. python benchmarks/hq200k_generalization.py --ei ei-result.json --output generalization-result.json
       - uses: actions/upload-artifact@v4
         with:
           name: hq200k-causal-results
@@ -35,4 +37,5 @@ jobs:
             causal-result.json
             gain-result.json
             ei-result.json
+            generalization-result.json
           retention-days: 14
