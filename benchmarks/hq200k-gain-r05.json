@@ -1,0 +1,1148 @@
+{
+  "source_run": "https://github.com/Garyu-tt/doom-neuron-genesis/actions/runs/46031262855",
+  "scope": "diagnostic gain sweep, no training, not CL1 calibrated",
+  "summary": {
+    "2.5": {
+      "pairs": 12,
+      "distinct_patterns": 0,
+      "both_vs_blank": 0,
+      "mean_pattern_l1": 0,
+      "mean_baseline_hz": 0.09756875000000002,
+      "max_baseline_peak_fraction": 0.001,
+      "max_stimulated_peak_fraction": 0.00227,
+      "mean_tail_fraction": 0.0009764166666666667
+    },
+    "3.0": {
+      "pairs": 12,
+      "distinct_patterns": 0,
+      "both_vs_blank": 0,
+      "mean_pattern_l1": 0,
+      "mean_baseline_hz": 0.09823125,
+      "max_baseline_peak_fraction": 0.001015,
+      "max_stimulated_peak_fraction": 0.00228,
+      "mean_tail_fraction": 0.0009821666666666666
+    },
+    "3.25": {
+      "pairs": 12,
+      "distinct_patterns": 0,
+      "both_vs_blank": 0,
+      "mean_pattern_l1": 0,
+      "mean_baseline_hz": 0.10000000000000002,
+      "max_baseline_peak_fraction": 0.00105,
+      "max_stimulated_peak_fraction": 0.00231,
+      "mean_tail_fraction": 0.000999
+    },
+    "3.5": {
+      "pairs": 12,
+      "distinct_patterns": 2,
+      "both_vs_blank": 0,
+      "mean_pattern_l1": 0.16666666666666666,
+      "mean_baseline_hz": 0.10307291666666667,
+      "max_baseline_peak_fraction": 0.001105,
+      "max_stimulated_peak_fraction": 0.002355,
+      "mean_tail_fraction": 0.0010324166666666665
+    },
+    "3.75": {
+      "pairs": 12,
+      "distinct_patterns": 6,
+      "both_vs_blank": 1,
+      "mean_pattern_l1": 1.25,
+      "mean_baseline_hz": 0.16350208333333335,
+      "max_baseline_peak_fraction": 0.002425,
+      "max_stimulated_peak_fraction": 0.03513,
+      "mean_tail_fraction": 0.004073
+    },
+    "4.0": {
+      "pairs": 12,
+      "distinct_patterns": 12,
+      "both_vs_blank": 11,
+      "mean_pattern_l1": 16,
+      "mean_baseline_hz": 14.806204166666667,
+      "max_baseline_peak_fraction": 0.2263,
+      "max_stimulated_peak_fraction": 0.29887,
+      "mean_tail_fraction": 0.19379908333333337
+    }
+  },
+  "rows": [
+    {
+      "seed": 37421,
+      "noise_seed": 3742100,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09784999999999999,
+      "baseline_peak_fraction": 0.001,
+      "tail_fraction": 0.000982,
+      "stimulated_peak_fraction": 0.002255
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742101,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09759999999999999,
+      "baseline_peak_fraction": 0.00099,
+      "tail_fraction": 0.000974,
+      "stimulated_peak_fraction": 0.00227
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742102,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09777500000000001,
+      "baseline_peak_fraction": 0.001,
+      "tail_fraction": 0.000976,
+      "stimulated_peak_fraction": 0.002265
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742103,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09757500000000001,
+      "baseline_peak_fraction": 0.00099,
+      "tail_fraction": 0.000977,
+      "stimulated_peak_fraction": 0.00227
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742100,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.098525,
+      "baseline_peak_fraction": 0.00101,
+      "tail_fraction": 0.000993,
+      "stimulated_peak_fraction": 0.002255
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742101,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09827500000000002,
+      "baseline_peak_fraction": 0.001,
+      "tail_fraction": 0.000979,
+      "stimulated_peak_fraction": 0.00228
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742102,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.098225,
+      "baseline_peak_fraction": 0.00101,
+      "tail_fraction": 0.000978,
+      "stimulated_peak_fraction": 0.00226
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742103,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09834999999999999,
+      "baseline_peak_fraction": 0.001005,
+      "tail_fraction": 0.000989,
+      "stimulated_peak_fraction": 0.00228
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742100,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09995,
+      "baseline_peak_fraction": 0.00103,
+      "tail_fraction": 0.001003,
+      "stimulated_peak_fraction": 0.002275
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742101,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09985000000000001,
+      "baseline_peak_fraction": 0.00103,
+      "tail_fraction": 0.000992,
+      "stimulated_peak_fraction": 0.00231
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742102,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.099975,
+      "baseline_peak_fraction": 0.00103,
+      "tail_fraction": 0.000993,
+      "stimulated_peak_fraction": 0.00228
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742103,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.1003,
+      "baseline_peak_fraction": 0.00103,
+      "tail_fraction": 0.001011,
+      "stimulated_peak_fraction": 0.00231
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742100,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10250000000000001,
+      "baseline_peak_fraction": 0.001055,
+      "tail_fraction": 0.00105,
+      "stimulated_peak_fraction": 0.002295
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742101,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10245,
+      "baseline_peak_fraction": 0.001055,
+      "tail_fraction": 0.001029,
+      "stimulated_peak_fraction": 0.00232
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742102,
+      "gain": 3.5,
+      "distances": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "baseline_hz": 0.102725,
+      "baseline_peak_fraction": 0.00109,
+      "tail_fraction": 0.0010140000000000001,
+      "stimulated_peak_fraction": 0.002325
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742103,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10332500000000001,
+      "baseline_peak_fraction": 0.001065,
+      "tail_fraction": 0.001045,
+      "stimulated_peak_fraction": 0.002325
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742100,
+      "gain": 3.75,
+      "distances": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "baseline_hz": 0.2164,
+      "baseline_peak_fraction": 0.002295,
+      "tail_fraction": 0.014851,
+      "stimulated_peak_fraction": 0.03513
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742101,
+      "gain": 3.75,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.13365,
+      "baseline_peak_fraction": 0.002195,
+      "tail_fraction": 0.001979,
+      "stimulated_peak_fraction": 0.0024
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742102,
+      "gain": 3.75,
+      "distances": [
+        0,
+        2,
+        2,
+        2
+      ],
+      "baseline_hz": 0.194,
+      "baseline_peak_fraction": 0.002345,
+      "tail_fraction": 0.00214,
+      "stimulated_peak_fraction": 0.002415
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742103,
+      "gain": 3.75,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.21197500000000002,
+      "baseline_peak_fraction": 0.002395,
+      "tail_fraction": 0.002927,
+      "stimulated_peak_fraction": 0.00441
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742100,
+      "gain": 4,
+      "distances": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "baseline_hz": 18.080975,
+      "baseline_peak_fraction": 0.21527,
+      "tail_fraction": 0.182155,
+      "stimulated_peak_fraction": 0.215775
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742101,
+      "gain": 4,
+      "distances": [
+        13,
+        17,
+        24,
+        35
+      ],
+      "baseline_hz": 12.341774999999998,
+      "baseline_peak_fraction": 0.225125,
+      "tail_fraction": 0.17743299999999998,
+      "stimulated_peak_fraction": 0.20562
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742102,
+      "gain": 4,
+      "distances": [
+        14,
+        12,
+        18,
+        17
+      ],
+      "baseline_hz": 14.181725,
+      "baseline_peak_fraction": 0.21863,
+      "tail_fraction": 0.18370099999999998,
+      "stimulated_peak_fraction": 0.21358
+    },
+    {
+      "seed": 37421,
+      "noise_seed": 3742103,
+      "gain": 4,
+      "distances": [
+        24,
+        24,
+        32,
+        37
+      ],
+      "baseline_hz": 14.468300000000001,
+      "baseline_peak_fraction": 0.21477,
+      "tail_fraction": 0.254586,
+      "stimulated_peak_fraction": 0.28099
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742200,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09759999999999999,
+      "baseline_peak_fraction": 0.000995,
+      "tail_fraction": 0.000977,
+      "stimulated_peak_fraction": 0.002255
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742201,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.097675,
+      "baseline_peak_fraction": 0.000995,
+      "tail_fraction": 0.000982,
+      "stimulated_peak_fraction": 0.002265
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742202,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09749999999999999,
+      "baseline_peak_fraction": 0.00099,
+      "tail_fraction": 0.000976,
+      "stimulated_peak_fraction": 0.002245
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742203,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09755,
+      "baseline_peak_fraction": 0.00099,
+      "tail_fraction": 0.000979,
+      "stimulated_peak_fraction": 0.00224
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742200,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.098175,
+      "baseline_peak_fraction": 0.001005,
+      "tail_fraction": 0.000982,
+      "stimulated_peak_fraction": 0.002265
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742201,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09825,
+      "baseline_peak_fraction": 0.001005,
+      "tail_fraction": 0.000988,
+      "stimulated_peak_fraction": 0.002265
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742202,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09805,
+      "baseline_peak_fraction": 0.000995,
+      "tail_fraction": 0.000978,
+      "stimulated_peak_fraction": 0.00225
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742203,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.0984,
+      "baseline_peak_fraction": 0.001005,
+      "tail_fraction": 0.000982,
+      "stimulated_peak_fraction": 0.00224
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742200,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.099525,
+      "baseline_peak_fraction": 0.00102,
+      "tail_fraction": 0.000994,
+      "stimulated_peak_fraction": 0.002275
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742201,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09995,
+      "baseline_peak_fraction": 0.00104,
+      "tail_fraction": 0.001005,
+      "stimulated_peak_fraction": 0.00229
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742202,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10027499999999999,
+      "baseline_peak_fraction": 0.001045,
+      "tail_fraction": 0.000998,
+      "stimulated_peak_fraction": 0.00229
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742203,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10027499999999999,
+      "baseline_peak_fraction": 0.001035,
+      "tail_fraction": 0.0010040000000000001,
+      "stimulated_peak_fraction": 0.00225
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742200,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10247499999999998,
+      "baseline_peak_fraction": 0.001065,
+      "tail_fraction": 0.001031,
+      "stimulated_peak_fraction": 0.002285
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742201,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10355,
+      "baseline_peak_fraction": 0.001075,
+      "tail_fraction": 0.001034,
+      "stimulated_peak_fraction": 0.002355
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742202,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.103575,
+      "baseline_peak_fraction": 0.001075,
+      "tail_fraction": 0.001023,
+      "stimulated_peak_fraction": 0.00234
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742203,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.103725,
+      "baseline_peak_fraction": 0.001085,
+      "tail_fraction": 0.001038,
+      "stimulated_peak_fraction": 0.002275
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742200,
+      "gain": 3.75,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.21402500000000002,
+      "baseline_peak_fraction": 0.002395,
+      "tail_fraction": 0.002158,
+      "stimulated_peak_fraction": 0.00327
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742201,
+      "gain": 3.75,
+      "distances": [
+        5,
+        0,
+        5,
+        5
+      ],
+      "baseline_hz": 0.10990000000000001,
+      "baseline_peak_fraction": 0.00114,
+      "tail_fraction": 0.006783,
+      "stimulated_peak_fraction": 0.01063
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742202,
+      "gain": 3.75,
+      "distances": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "baseline_hz": 0.19962500000000002,
+      "baseline_peak_fraction": 0.00233,
+      "tail_fraction": 0.002182,
+      "stimulated_peak_fraction": 0.002465
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742203,
+      "gain": 3.75,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.13925,
+      "baseline_peak_fraction": 0.002425,
+      "tail_fraction": 0.004667,
+      "stimulated_peak_fraction": 0.00557
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742200,
+      "gain": 4,
+      "distances": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "baseline_hz": 17.433400000000002,
+      "baseline_peak_fraction": 0.21051,
+      "tail_fraction": 0.180923,
+      "stimulated_peak_fraction": 0.21149
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742201,
+      "gain": 4,
+      "distances": [
+        5,
+        1,
+        4,
+        3
+      ],
+      "baseline_hz": 17.02145,
+      "baseline_peak_fraction": 0.21402,
+      "tail_fraction": 0.18438900000000003,
+      "stimulated_peak_fraction": 0.21272
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742202,
+      "gain": 4,
+      "distances": [
+        3,
+        6,
+        5,
+        5
+      ],
+      "baseline_hz": 16.903750000000002,
+      "baseline_peak_fraction": 0.219205,
+      "tail_fraction": 0.187018,
+      "stimulated_peak_fraction": 0.21962
+    },
+    {
+      "seed": 37422,
+      "noise_seed": 3742203,
+      "gain": 4,
+      "distances": [
+        55,
+        44,
+        33,
+        105
+      ],
+      "baseline_hz": 8.152875,
+      "baseline_peak_fraction": 0.2263,
+      "tail_fraction": 0.23962799999999998,
+      "stimulated_peak_fraction": 0.29887
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742300,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.0978,
+      "baseline_peak_fraction": 0.00099,
+      "tail_fraction": 0.000978,
+      "stimulated_peak_fraction": 0.00227
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742301,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09707500000000001,
+      "baseline_peak_fraction": 0.001,
+      "tail_fraction": 0.000964,
+      "stimulated_peak_fraction": 0.00225
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742302,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.0974,
+      "baseline_peak_fraction": 0.001,
+      "tail_fraction": 0.000977,
+      "stimulated_peak_fraction": 0.00225
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742303,
+      "gain": 2.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.097425,
+      "baseline_peak_fraction": 0.000995,
+      "tail_fraction": 0.000975,
+      "stimulated_peak_fraction": 0.002245
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742300,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.0986,
+      "baseline_peak_fraction": 0.001015,
+      "tail_fraction": 0.000988,
+      "stimulated_peak_fraction": 0.002275
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742301,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09745,
+      "baseline_peak_fraction": 0.001005,
+      "tail_fraction": 0.00097,
+      "stimulated_peak_fraction": 0.002245
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742302,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.098175,
+      "baseline_peak_fraction": 0.001005,
+      "tail_fraction": 0.00098,
+      "stimulated_peak_fraction": 0.002255
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742303,
+      "gain": 3,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.0983,
+      "baseline_peak_fraction": 0.00101,
+      "tail_fraction": 0.000979,
+      "stimulated_peak_fraction": 0.00225
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742300,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.100825,
+      "baseline_peak_fraction": 0.00105,
+      "tail_fraction": 0.001005,
+      "stimulated_peak_fraction": 0.0023
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742301,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09942499999999999,
+      "baseline_peak_fraction": 0.001015,
+      "tail_fraction": 0.000994,
+      "stimulated_peak_fraction": 0.00227
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742302,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.0998,
+      "baseline_peak_fraction": 0.00103,
+      "tail_fraction": 0.000995,
+      "stimulated_peak_fraction": 0.002255
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742303,
+      "gain": 3.25,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.09985000000000001,
+      "baseline_peak_fraction": 0.001025,
+      "tail_fraction": 0.000994,
+      "stimulated_peak_fraction": 0.002255
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742300,
+      "gain": 3.5,
+      "distances": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "baseline_hz": 0.104375,
+      "baseline_peak_fraction": 0.001105,
+      "tail_fraction": 0.001042,
+      "stimulated_peak_fraction": 0.002335
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742301,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.102725,
+      "baseline_peak_fraction": 0.00106,
+      "tail_fraction": 0.001037,
+      "stimulated_peak_fraction": 0.00227
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742302,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10245,
+      "baseline_peak_fraction": 0.00107,
+      "tail_fraction": 0.001028,
+      "stimulated_peak_fraction": 0.002275
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742303,
+      "gain": 3.5,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.10300000000000001,
+      "baseline_peak_fraction": 0.001065,
+      "tail_fraction": 0.001018,
+      "stimulated_peak_fraction": 0.00228
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742300,
+      "gain": 3.75,
+      "distances": [
+        0,
+        0,
+        0,
+        4
+      ],
+      "baseline_hz": 0.11105,
+      "baseline_peak_fraction": 0.001195,
+      "tail_fraction": 0.004095,
+      "stimulated_peak_fraction": 0.004945
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742301,
+      "gain": 3.75,
+      "distances": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "baseline_hz": 0.21190000000000003,
+      "baseline_peak_fraction": 0.002375,
+      "tail_fraction": 0.002251,
+      "stimulated_peak_fraction": 0.002645
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742302,
+      "gain": 3.75,
+      "distances": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "baseline_hz": 0.1106,
+      "baseline_peak_fraction": 0.001185,
+      "tail_fraction": 0.0011359999999999999,
+      "stimulated_peak_fraction": 0.00233
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742303,
+      "gain": 3.75,
+      "distances": [
+        0,
+        4,
+        4,
+        5
+      ],
+      "baseline_hz": 0.10965,
+      "baseline_peak_fraction": 0.00115,
+      "tail_fraction": 0.003707,
+      "stimulated_peak_fraction": 0.004425
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742300,
+      "gain": 4,
+      "distances": [
+        21,
+        26,
+        33,
+        30
+      ],
+      "baseline_hz": 13.184750000000001,
+      "baseline_peak_fraction": 0.21752,
+      "tail_fraction": 0.18446099999999999,
+      "stimulated_peak_fraction": 0.210215
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742301,
+      "gain": 4,
+      "distances": [
+        6,
+        3,
+        5,
+        8
+      ],
+      "baseline_hz": 16.47985,
+      "baseline_peak_fraction": 0.206735,
+      "tail_fraction": 0.186673,
+      "stimulated_peak_fraction": 0.20548
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742302,
+      "gain": 4,
+      "distances": [
+        11,
+        9,
+        14,
+        16
+      ],
+      "baseline_hz": 15.431849999999999,
+      "baseline_peak_fraction": 0.201215,
+      "tail_fraction": 0.17917,
+      "stimulated_peak_fraction": 0.208975
+    },
+    {
+      "seed": 37423,
+      "noise_seed": 3742303,
+      "gain": 4,
+      "distances": [
+        18,
+        29,
+        21,
+        33
+      ],
+      "baseline_hz": 13.993749999999999,
+      "baseline_peak_fraction": 0.210315,
+      "tail_fraction": 0.185452,
+      "stimulated_peak_fraction": 0.21857
+    }
+  ]
+}

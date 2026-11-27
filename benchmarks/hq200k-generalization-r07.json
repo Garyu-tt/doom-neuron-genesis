@@ -1,0 +1,111 @@
+{
+  "source_run": "https://github.com/Garyu-tt/doom-neuron-genesis/actions/runs/46031754631",
+  "scope": "held-out noise-seed classification within each unseen graph; offline probe, not neural learning",
+  "candidate_rule": "baseline <=2 Hz; max late <=3 Hz; peak <=20%; distinct >=4/6",
+  "selected": [],
+  "chance": 0.25,
+  "rows": [
+    {
+      "graph_seed": 48101,
+      "gain": "1.0/1.0",
+      "test_count": 16,
+      "correct": 4,
+      "confusion": [
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ]
+      ],
+      "max_peak": 0.00164,
+      "mean_late_hz": 0.09864583333333332
+    },
+    {
+      "graph_seed": 48102,
+      "gain": "1.0/1.0",
+      "test_count": 16,
+      "correct": 4,
+      "confusion": [
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ]
+      ],
+      "max_peak": 0.00164,
+      "mean_late_hz": 0.09872083333333333
+    },
+    {
+      "graph_seed": 48103,
+      "gain": "1.0/1.0",
+      "test_count": 16,
+      "correct": 4,
+      "confusion": [
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ]
+      ],
+      "max_peak": 0.00164,
+      "mean_late_hz": 0.09870833333333333
+    }
+  ]
+}
