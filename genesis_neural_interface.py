@@ -93,8 +93,8 @@ def serve(backend, args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--backend", required=True, help="Trusted installed module:factory; no fallback")
-    parser.add_argument("--topology", required=True, help="Existing HQ200K topology path")
-    parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--topology", required=True, help="HQ200K generator JSON configuration")
+    parser.add_argument("--seed", type=int, default=37421)
     parser.add_argument("--max-steps", type=int, default=1000)
     parser.add_argument("--idle-timeout", type=float, default=60)
     parser.add_argument("--artifact-wait-ms", type=float, default=50)
