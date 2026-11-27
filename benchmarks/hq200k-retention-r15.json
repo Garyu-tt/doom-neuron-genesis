@@ -1,0 +1,437 @@
+{
+  "source_run": "https://github.com/Garyu-tt/doom-neuron-genesis/actions/runs/46035652866",
+  "rows": [
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37423,
+      "mode": "budgeted",
+      "training_arm": "structured",
+      "training": {
+        "episodes": 4,
+        "reward": -615,
+        "kills": 6,
+        "steps": 512
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -660,
+            "kills": 2,
+            "steps": 256
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -750,
+            "kills": 0,
+            "steps": 256
+          },
+          "delta_reward": -90
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -515,
+            "kills": 5,
+            "steps": 256
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -655,
+            "kills": 2,
+            "steps": 252
+          },
+          "delta_reward": -140
+        }
+      ],
+      "weights_changed": true,
+      "mean_delta_reward": -115
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37423,
+      "mode": "legacy",
+      "training_arm": "structured",
+      "training": {
+        "episodes": 4,
+        "reward": -630,
+        "kills": 5,
+        "steps": 489
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -660,
+            "kills": 2,
+            "steps": 256
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -750,
+            "kills": 0,
+            "steps": 256
+          },
+          "delta_reward": -90
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -515,
+            "kills": 5,
+            "steps": 256
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -560,
+            "kills": 4,
+            "steps": 244
+          },
+          "delta_reward": -45
+        }
+      ],
+      "weights_changed": true,
+      "mean_delta_reward": -67.5
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37422,
+      "mode": "legacy",
+      "training_arm": "frozen",
+      "training": {
+        "episodes": 4,
+        "reward": -545,
+        "kills": 9,
+        "steps": 508
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -750,
+            "kills": 0,
+            "steps": 235
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -750,
+            "kills": 0,
+            "steps": 235
+          },
+          "delta_reward": 0
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -610,
+            "kills": 3,
+            "steps": 245
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -610,
+            "kills": 3,
+            "steps": 245
+          },
+          "delta_reward": 0
+        }
+      ],
+      "weights_changed": false,
+      "mean_delta_reward": 0
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37421,
+      "mode": "legacy",
+      "training_arm": "structured",
+      "training": {
+        "episodes": 4,
+        "reward": -530,
+        "kills": 1,
+        "steps": 457
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -495,
+            "kills": 2,
+            "steps": 252
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -535,
+            "kills": 1,
+            "steps": 221
+          },
+          "delta_reward": -40
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -585,
+            "kills": 0,
+            "steps": 222
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -515,
+            "kills": 1,
+            "steps": 256
+          },
+          "delta_reward": 70
+        }
+      ],
+      "weights_changed": true,
+      "mean_delta_reward": 15
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37423,
+      "mode": "legacy",
+      "training_arm": "frozen",
+      "training": {
+        "episodes": 4,
+        "reward": -605,
+        "kills": 6,
+        "steps": 512
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -660,
+            "kills": 2,
+            "steps": 256
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -660,
+            "kills": 2,
+            "steps": 256
+          },
+          "delta_reward": 0
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -515,
+            "kills": 5,
+            "steps": 256
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -515,
+            "kills": 5,
+            "steps": 256
+          },
+          "delta_reward": 0
+        }
+      ],
+      "weights_changed": false,
+      "mean_delta_reward": 0
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37422,
+      "mode": "legacy",
+      "training_arm": "structured",
+      "training": {
+        "episodes": 4,
+        "reward": -657.5,
+        "kills": 4,
+        "steps": 491
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -750,
+            "kills": 0,
+            "steps": 235
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -525,
+            "kills": 5,
+            "steps": 253
+          },
+          "delta_reward": 225
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -610,
+            "kills": 3,
+            "steps": 245
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -520,
+            "kills": 5,
+            "steps": 254
+          },
+          "delta_reward": 90
+        }
+      ],
+      "weights_changed": true,
+      "mean_delta_reward": 157.5
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37422,
+      "mode": "budgeted",
+      "training_arm": "structured",
+      "training": {
+        "episodes": 4,
+        "reward": -545,
+        "kills": 9,
+        "steps": 498
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -750,
+            "kills": 0,
+            "steps": 235
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -310,
+            "kills": 9,
+            "steps": 254
+          },
+          "delta_reward": 440
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -610,
+            "kills": 3,
+            "steps": 245
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -475,
+            "kills": 6,
+            "steps": 256
+          },
+          "delta_reward": 135
+        }
+      ],
+      "weights_changed": true,
+      "mean_delta_reward": 287.5
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37421,
+      "mode": "budgeted",
+      "training_arm": "structured",
+      "training": {
+        "episodes": 4,
+        "reward": -570,
+        "kills": 0,
+        "steps": 486
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -495,
+            "kills": 2,
+            "steps": 252
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -540,
+            "kills": 1,
+            "steps": 207
+          },
+          "delta_reward": -45
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -585,
+            "kills": 0,
+            "steps": 222
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -565,
+            "kills": 0,
+            "steps": 208
+          },
+          "delta_reward": 20
+        }
+      ],
+      "weights_changed": true,
+      "mean_delta_reward": -12.5
+    },
+    {
+      "scope": "paired held-out random seeds, same scenario; not evidence of transfer to new maps",
+      "graph_seed": 37421,
+      "mode": "legacy",
+      "training_arm": "frozen",
+      "training": {
+        "episodes": 4,
+        "reward": -520,
+        "kills": 2,
+        "steps": 508
+      },
+      "pairs": [
+        {
+          "evaluation_seed": 59101,
+          "before": {
+            "episodes": 2,
+            "reward": -495,
+            "kills": 2,
+            "steps": 252
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -495,
+            "kills": 2,
+            "steps": 252
+          },
+          "delta_reward": 0
+        },
+        {
+          "evaluation_seed": 59102,
+          "before": {
+            "episodes": 2,
+            "reward": -585,
+            "kills": 0,
+            "steps": 222
+          },
+          "after": {
+            "episodes": 2,
+            "reward": -585,
+            "kills": 0,
+            "steps": 222
+          },
+          "delta_reward": 0
+        }
+      ],
+      "weights_changed": false,
+      "mean_delta_reward": 0
+    }
+  ]
+}
