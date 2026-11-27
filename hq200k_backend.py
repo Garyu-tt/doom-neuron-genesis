@@ -70,8 +70,30 @@ def graph_hash(dst, w):
     return h.hexdigest()
 
 
+def patch_electrodes(seed, patches):
+    """Exact R17/R18 synthetic placement; no graph-edge inspection."""
+    if type(patches) is not int or patches not in (1,2,4):
+        raise ValueError("expected one, two or four modules")
+    rng=np.random.default_rng(seed ^ 0xACED)
+    parts=[]
+    for i,(lo,hi) in enumerate(zip(BOUNDS[:-1],BOUNDS[1:])):
+        width=5 if i<4 else 4
+        if patches==1:
+            base=int(lo)+MODULE*int(rng.integers(int(hi-lo)//MODULE))
+            parts.append((base+rng.choice(MODULE,64*width,replace=False)).reshape(64,width))
+            continue
+        bases=int(lo)+MODULE*rng.choice(int(hi-lo)//MODULE,patches,replace=False)
+        chunks=[]
+        for p,base in enumerate(bases):
+            count=width//patches+int(p<width%patches)
+            if count:
+                chunks.append((base+rng.choice(MODULE,64*count,replace=False)).reshape(64,count))
+        parts.append(np.concatenate(chunks,axis=1))
+    return np.concatenate(parts,axis=1)
+
+
 class HQ200K:
-    def __init__(self, seed=37421, plasticity=True, shuffled=False, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., adaptation_tau_ms=200., plasticity_mode="legacy", plasticity_budget=2.):
+    def __init__(self, seed=37421, plasticity=True, shuffled=False, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., adaptation_tau_ms=200., plasticity_mode="legacy", plasticity_budget=2., electrode_patches=0):
         for gain in (excitation_gain, inhibition_gain):
             if isinstance(gain, bool) or not isinstance(gain,(int,float)) or not math.isfinite(gain) or not 0 < gain <= 8:
                 raise ValueError('gain must be finite, positive and <=8')
@@ -107,6 +129,12 @@ class HQ200K:
                   for lo, hi in zip(BOUNDS[:-1], BOUNDS[1:])]
         self.electrodes = np.concatenate([x.reshape(64,5)[:, :5 if i<4 else 4]
                                          for i,x in enumerate(chosen)],axis=1)
+        if type(electrode_patches) is not int or electrode_patches not in (0,1,2,4):
+            raise ValueError("electrode_patches must be 0, 1, 2 or 4")
+        self.electrode_patches=electrode_patches
+        if electrode_patches:
+            self.electrodes=patch_electrodes(seed,electrode_patches)
+        self.electrode_sha256=hashlib.sha256(self.electrodes.astype("<i8",copy=False).tobytes()).hexdigest()
         self.previous = np.empty(0, np.int32)
         self.eligibility = deque(maxlen=10)
         self.feedback_queue = {}
@@ -119,6 +147,7 @@ class HQ200K:
                 "synapse_slots":int(self.dst.size),"topology_sha256":self.initial_hash,
                 "seed":self.seed,"shuffled":self.shuffled,"plasticity":self.plasticity,
                 "tick_ms":TICK_MS,"electrode_cells":self.electrodes.shape[1],
+                "electrode_patches":self.electrode_patches,"electrode_sha256":self.electrode_sha256,
                 "excitation_gain":self.excitation_gain,"inhibition_gain":self.inhibition_gain,"stimulus_mode":self.stimulus_mode,
                 "adaptation_strength":self.adaptation_strength,"adaptation_tau_ms":self.adaptation_tau_ms,
                 "plasticity_mode":self.plasticity_mode,"plasticity_budget":self.plasticity_budget}
@@ -270,7 +299,7 @@ def factory(topology_path, neurons, seed):
     if neurons!=N:
         raise ValueError("HQ200K requires 200000 resident neurons")
     cfg = json.loads(Path(topology_path).read_text())
-    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256","excitation_gain","inhibition_gain","stimulus_mode","adaptation_strength","adaptation_tau_ms","plasticity_mode","plasticity_budget"}:
+    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256","excitation_gain","inhibition_gain","stimulus_mode","adaptation_strength","adaptation_tau_ms","plasticity_mode","plasticity_budget","electrode_patches"}:
         raise ValueError("unknown HQ200K config field")
     for key in ("plasticity","shuffled"):
         if key in cfg and type(cfg[key]) is not bool:
@@ -278,7 +307,7 @@ def factory(topology_path, neurons, seed):
     brain = HQ200K(seed,cfg.get("plasticity",True),cfg.get("shuffled",False),
                    cfg.get("excitation_gain",1.),cfg.get("inhibition_gain",1.),cfg.get("stimulus_mode","single"),
                    cfg.get("adaptation_strength",0.),cfg.get("adaptation_tau_ms",200.),
-                   cfg.get("plasticity_mode","legacy"),cfg.get("plasticity_budget",2.))
+                   cfg.get("plasticity_mode","legacy"),cfg.get("plasticity_budget",2.),cfg.get("electrode_patches",0))
     if cfg.get("expected_sha256") and cfg["expected_sha256"]!=brain.initial_hash:
         raise ValueError("topology hash mismatch")
     return brain
