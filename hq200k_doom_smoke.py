@@ -34,7 +34,7 @@ def policy_hash(policy):
     return h.hexdigest()
 
 
-def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32, plasticity_mode="legacy", plasticity_budget=2., fixed_interface=False, weights_path=None, save_weights=False, evaluation_seed=None):
+def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32, plasticity_mode="legacy", plasticity_budget=2., fixed_interface=False, weights_path=None, save_weights=False, evaluation_seed=None, electrode_patches=0):
     if not (1<=batches<=16 and 128<=episode_tics<=4200 and 32<=rollout_steps<=256):
         raise ValueError("bounded experiment parameters required")
     output.mkdir(parents=True, exist_ok=False)
@@ -50,13 +50,15 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
     text = re.sub(r"(?m)^episode_timeout\s*=.*$",f"episode_timeout = {episode_tics}",text)
     cfg.write_text(text)
     brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled",
-                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode, adaptation_strength=adaptation_strength, plasticity_mode=plasticity_mode, plasticity_budget=plasticity_budget)
+                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode, adaptation_strength=adaptation_strength, plasticity_mode=plasticity_mode, plasticity_budget=plasticity_budget, electrode_patches=electrode_patches)
     if evaluation_seed is not None and (not fixed_interface or arm!="frozen"):
         raise ValueError("held-out evaluation must freeze all weights")
     if weights_path is not None:
         with np.load(weights_path,allow_pickle=False) as data:
             if str(data["topology_sha256"].item())!=brain.initial_hash:
                 raise ValueError("checkpoint topology mismatch")
+            if "electrode_sha256" not in data or str(data["electrode_sha256"].item())!=brain.electrode_sha256:
+                raise ValueError("checkpoint electrode mapping mismatch")
             weights=data["weights"]
             if weights.shape!=brain.w.shape or weights.dtype!=brain.w.dtype or not np.isfinite(weights).all() or not np.array_equal(np.sign(weights),np.sign(brain.w)):
                 raise ValueError("invalid checkpoint weights")
@@ -146,7 +148,7 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
         if arm=="frozen" and final_weight_hash!=initial_weight_hash:
             raise RuntimeError("frozen neural weights changed")
         if save_weights:
-            np.savez(output/"weights.npz",weights=brain.w,topology_sha256=brain.initial_hash)
+            np.savez(output/"weights.npz",weights=brain.w,topology_sha256=brain.initial_hash,electrode_sha256=brain.electrode_sha256)
         result={"evaluation_seed":evaluation_seed,"evaluation_feedback_disabled":evaluation_seed is not None,"initial_neural_weights_sha256":initial_weight_hash,"final_neural_weights_sha256":final_weight_hash,"status":"smoke_only" if batches<=4 and episode_tics==128 else "bounded_training_pilot","arm":arm,"seed":seed,
                 "scenario_sha256":hashlib.sha256(wad.read_bytes()).hexdigest(),
                 "original_config_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),
@@ -191,6 +193,7 @@ if __name__=="__main__":
     p.add_argument("--weights-path",type=Path)
     p.add_argument("--save-weights",action="store_true")
     p.add_argument("--evaluation-seed",type=int)
+    p.add_argument("--electrode-patches",type=int,choices=(0,1,2,4),default=0)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps,a.plasticity_mode,a.plasticity_budget,a.fixed_interface,a.weights_path,a.save_weights,a.evaluation_seed)
+    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps,a.plasticity_mode,a.plasticity_budget,a.fixed_interface,a.weights_path,a.save_weights,a.evaluation_seed,a.electrode_patches)
