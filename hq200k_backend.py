@@ -71,10 +71,15 @@ def graph_hash(dst, w):
 
 
 class HQ200K:
-    def __init__(self, seed=37421, plasticity=True, shuffled=False, excitation_gain=1., inhibition_gain=1.):
+    def __init__(self, seed=37421, plasticity=True, shuffled=False, excitation_gain=1., inhibition_gain=1., stimulus_mode="single"):
         for gain in (excitation_gain, inhibition_gain):
             if isinstance(gain, bool) or not isinstance(gain,(int,float)) or not math.isfinite(gain) or not 0 < gain <= 8:
                 raise ValueError('gain must be finite, positive and <=8')
+        if stimulus_mode not in ('single', 'rate'):
+            raise ValueError('stimulus_mode must be single or rate')
+        self.stimulus_mode = stimulus_mode
+        self.stim_phase = np.zeros(8, np.float64)
+        self.input_pulses = np.zeros(8, np.int64)
         self.excitation_gain = float(excitation_gain)
         self.inhibition_gain = float(inhibition_gain)
         self.dst, self.w = build_graph(seed, shuffled)
@@ -102,7 +107,7 @@ class HQ200K:
                 "synapse_slots":int(self.dst.size),"topology_sha256":self.initial_hash,
                 "seed":self.seed,"shuffled":self.shuffled,"plasticity":self.plasticity,
                 "tick_ms":TICK_MS,"electrode_cells":self.electrodes.shape[1],
-                "excitation_gain":self.excitation_gain,"inhibition_gain":self.inhibition_gain}
+                "excitation_gain":self.excitation_gain,"inhibition_gain":self.inhibition_gain,"stimulus_mode":self.stimulus_mode}
 
     def _tick(self, injection):
         # Original HQ500M leak, threshold, refractory and weight scale.
@@ -149,10 +154,22 @@ class HQ200K:
         wait = math.ceil(artifact_wait_ms/TICK_MS)
         collect = math.ceil(collect_window_ms/TICK_MS)
         counts = np.zeros(64, np.int64)
-        # Upstream burst_count=1; one pulse per positive-frequency encoding channel.
+        # Reference uses the upstream single pulse. Experimental rate mode
+        # preserves fractional phase across packets; 0..40 Hz is the upstream range.
+        freq = np.asarray(frequencies_hz, np.float64)
+        amps = np.asarray(amplitudes_ua, np.float64)
+        if np.any(freq < 0) or (self.stimulus_mode == "rate" and np.any(freq > 100)):
+            raise ValueError("unsupported frequency")
         for t in range(wait+collect):
-            injection = {ch:a for ch,f,a in zip(ENCODING,frequencies_hz,amplitudes_ua)
-                         if t==0 and f>0 and a!=0}
+            if self.stimulus_mode == "rate":
+                self.stim_phase += freq * (TICK_MS/1000)
+                pulses = np.floor(self.stim_phase + 1e-12).astype(np.int64)
+                self.stim_phase -= pulses
+            else:
+                pulses = ((freq>0) & (t==0)).astype(np.int64)
+            pulses = np.where(amps!=0,pulses,0)
+            self.input_pulses += pulses
+            injection = {ch:float(a*p) for ch,a,p in zip(ENCODING,amps,pulses) if p}
             for ch,(left,hz,amp,phase) in list(self.feedback_queue.items()):
                 phase += hz*TICK_MS/1000
                 pulses = min(left,int(phase))
@@ -197,7 +214,8 @@ class HQ200K:
 
     def telemetry(self):
         return {**self.metadata(),"steps":self.steps,"ticks":self.ticks,"spikes":self.spikes,
-                "plasticity_updates":self.updates,"feedback_events":self.feedback_events}
+                "plasticity_updates":self.updates,"feedback_events":self.feedback_events,
+                "input_pulses":self.input_pulses.tolist()}
 
     def close(self):
         print(json.dumps({"hq200k":self.telemetry()},sort_keys=True),flush=True)
@@ -208,13 +226,13 @@ def factory(topology_path, neurons, seed):
     if neurons!=N:
         raise ValueError("HQ200K requires 200000 resident neurons")
     cfg = json.loads(Path(topology_path).read_text())
-    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256","excitation_gain","inhibition_gain"}:
+    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256","excitation_gain","inhibition_gain","stimulus_mode"}:
         raise ValueError("unknown HQ200K config field")
     for key in ("plasticity","shuffled"):
         if key in cfg and type(cfg[key]) is not bool:
             raise ValueError("expected boolean config")
     brain = HQ200K(seed,cfg.get("plasticity",True),cfg.get("shuffled",False),
-                   cfg.get("excitation_gain",1.),cfg.get("inhibition_gain",1.))
+                   cfg.get("excitation_gain",1.),cfg.get("inhibition_gain",1.),cfg.get("stimulus_mode","single"))
     if cfg.get("expected_sha256") and cfg["expected_sha256"]!=brain.initial_hash:
         raise ValueError("topology hash mismatch")
     return brain
