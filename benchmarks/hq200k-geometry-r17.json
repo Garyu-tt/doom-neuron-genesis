@@ -1,0 +1,389 @@
+{
+  "source_run": "https://github.com/Garyu-tt/doom-neuron-genesis/actions/runs/46041938137",
+  "rows": [
+    {
+      "seed": 48103,
+      "shuffled": false,
+      "placement": "distributed",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "c72f80b2b2efc8dfeb93533b35a08c9599b1161e850e6ec111e96b6ebaec3d88",
+      "electrode_sha256": "82743df56affd5c6f23bb7361d02b704b9e3c8c68e4405aeacc9a5df3e394448",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48103,
+      "shuffled": false,
+      "placement": "local",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "c72f80b2b2efc8dfeb93533b35a08c9599b1161e850e6ec111e96b6ebaec3d88",
+      "electrode_sha256": "2609b8bd26e696a06612b173dffd2f056405fb4aefcda20974cbc62709386dfa",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48103,
+      "shuffled": false,
+      "placement": "distributed",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "c72f80b2b2efc8dfeb93533b35a08c9599b1161e850e6ec111e96b6ebaec3d88",
+      "electrode_sha256": "82743df56affd5c6f23bb7361d02b704b9e3c8c68e4405aeacc9a5df3e394448",
+      "max_peak": 0.162015,
+      "test_count": 16,
+      "early_correct": 3,
+      "late_correct": 6
+    },
+    {
+      "seed": 48103,
+      "shuffled": false,
+      "placement": "local",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "c72f80b2b2efc8dfeb93533b35a08c9599b1161e850e6ec111e96b6ebaec3d88",
+      "electrode_sha256": "2609b8bd26e696a06612b173dffd2f056405fb4aefcda20974cbc62709386dfa",
+      "max_peak": 0.220305,
+      "test_count": 16,
+      "early_correct": 6,
+      "late_correct": 8
+    },
+    {
+      "seed": 48103,
+      "shuffled": true,
+      "placement": "distributed",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "6b1438eafd02d7c54a2d67562cf66ed84564af18efe1cf2739ee1434a22e75f3",
+      "electrode_sha256": "82743df56affd5c6f23bb7361d02b704b9e3c8c68e4405aeacc9a5df3e394448",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48103,
+      "shuffled": true,
+      "placement": "local",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "6b1438eafd02d7c54a2d67562cf66ed84564af18efe1cf2739ee1434a22e75f3",
+      "electrode_sha256": "2609b8bd26e696a06612b173dffd2f056405fb4aefcda20974cbc62709386dfa",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48103,
+      "shuffled": true,
+      "placement": "distributed",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "6b1438eafd02d7c54a2d67562cf66ed84564af18efe1cf2739ee1434a22e75f3",
+      "electrode_sha256": "82743df56affd5c6f23bb7361d02b704b9e3c8c68e4405aeacc9a5df3e394448",
+      "max_peak": 0.00182,
+      "test_count": 16,
+      "early_correct": 6,
+      "late_correct": 4
+    },
+    {
+      "seed": 48103,
+      "shuffled": true,
+      "placement": "local",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "6b1438eafd02d7c54a2d67562cf66ed84564af18efe1cf2739ee1434a22e75f3",
+      "electrode_sha256": "2609b8bd26e696a06612b173dffd2f056405fb4aefcda20974cbc62709386dfa",
+      "max_peak": 0.00182,
+      "test_count": 16,
+      "early_correct": 5,
+      "late_correct": 4
+    },
+    {
+      "seed": 48101,
+      "shuffled": false,
+      "placement": "distributed",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "fe1c48e2e09701dab6d1af5015dc96fbf3aa8c4618eefebc2ad4a55f80eec275",
+      "electrode_sha256": "cbfcade385aadd6e1905d0ca0c06838fd3203a9b823ba24504f04ba1870f8c44",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48101,
+      "shuffled": false,
+      "placement": "local",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "fe1c48e2e09701dab6d1af5015dc96fbf3aa8c4618eefebc2ad4a55f80eec275",
+      "electrode_sha256": "ee5a02988cc3d565a9958fb500543e3cfc592cca1dc6d406e5ff877a211c78b6",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48101,
+      "shuffled": false,
+      "placement": "distributed",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "fe1c48e2e09701dab6d1af5015dc96fbf3aa8c4618eefebc2ad4a55f80eec275",
+      "electrode_sha256": "cbfcade385aadd6e1905d0ca0c06838fd3203a9b823ba24504f04ba1870f8c44",
+      "max_peak": 0.16515,
+      "test_count": 16,
+      "early_correct": 5,
+      "late_correct": 3
+    },
+    {
+      "seed": 48101,
+      "shuffled": false,
+      "placement": "local",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "fe1c48e2e09701dab6d1af5015dc96fbf3aa8c4618eefebc2ad4a55f80eec275",
+      "electrode_sha256": "ee5a02988cc3d565a9958fb500543e3cfc592cca1dc6d406e5ff877a211c78b6",
+      "max_peak": 0.237825,
+      "test_count": 16,
+      "early_correct": 11,
+      "late_correct": 6
+    },
+    {
+      "seed": 48101,
+      "shuffled": true,
+      "placement": "distributed",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "0c7c6d07d2bfc9e48f7d5fffd17f02308c51e5ee07045faad2953a73151ed1e1",
+      "electrode_sha256": "cbfcade385aadd6e1905d0ca0c06838fd3203a9b823ba24504f04ba1870f8c44",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48101,
+      "shuffled": true,
+      "placement": "local",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "0c7c6d07d2bfc9e48f7d5fffd17f02308c51e5ee07045faad2953a73151ed1e1",
+      "electrode_sha256": "ee5a02988cc3d565a9958fb500543e3cfc592cca1dc6d406e5ff877a211c78b6",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48101,
+      "shuffled": true,
+      "placement": "distributed",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "0c7c6d07d2bfc9e48f7d5fffd17f02308c51e5ee07045faad2953a73151ed1e1",
+      "electrode_sha256": "cbfcade385aadd6e1905d0ca0c06838fd3203a9b823ba24504f04ba1870f8c44",
+      "max_peak": 0.001795,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48101,
+      "shuffled": true,
+      "placement": "local",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "0c7c6d07d2bfc9e48f7d5fffd17f02308c51e5ee07045faad2953a73151ed1e1",
+      "electrode_sha256": "ee5a02988cc3d565a9958fb500543e3cfc592cca1dc6d406e5ff877a211c78b6",
+      "max_peak": 0.001795,
+      "test_count": 16,
+      "early_correct": 5,
+      "late_correct": 4
+    },
+    {
+      "seed": 48102,
+      "shuffled": false,
+      "placement": "distributed",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "5ad94c5bbd87c853b45aed879e169fed3f82cf9f4f6c20dab8dddf9e4caffa1f",
+      "electrode_sha256": "60687ed5b25722988835328c653364f6382d0a6f3c8a81d75bfade244d6bbd01",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48102,
+      "shuffled": false,
+      "placement": "local",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "5ad94c5bbd87c853b45aed879e169fed3f82cf9f4f6c20dab8dddf9e4caffa1f",
+      "electrode_sha256": "ca574b5c079b916eccefc9301d13aafbf3cf260e7463965276e0bc4f97c51f21",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48102,
+      "shuffled": false,
+      "placement": "distributed",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "5ad94c5bbd87c853b45aed879e169fed3f82cf9f4f6c20dab8dddf9e4caffa1f",
+      "electrode_sha256": "60687ed5b25722988835328c653364f6382d0a6f3c8a81d75bfade244d6bbd01",
+      "max_peak": 0.20663,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48102,
+      "shuffled": false,
+      "placement": "local",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "5ad94c5bbd87c853b45aed879e169fed3f82cf9f4f6c20dab8dddf9e4caffa1f",
+      "electrode_sha256": "ca574b5c079b916eccefc9301d13aafbf3cf260e7463965276e0bc4f97c51f21",
+      "max_peak": 0.2356,
+      "test_count": 16,
+      "early_correct": 10,
+      "late_correct": 9
+    },
+    {
+      "seed": 48102,
+      "shuffled": true,
+      "placement": "distributed",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "9cd16a9498865cc3b083cdb2d3c5537acf4de0518c3d45385a690fa91b341437",
+      "electrode_sha256": "60687ed5b25722988835328c653364f6382d0a6f3c8a81d75bfade244d6bbd01",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48102,
+      "shuffled": true,
+      "placement": "local",
+      "gains": [
+        1,
+        1,
+        0
+      ],
+      "topology": "9cd16a9498865cc3b083cdb2d3c5537acf4de0518c3d45385a690fa91b341437",
+      "electrode_sha256": "ca574b5c079b916eccefc9301d13aafbf3cf260e7463965276e0bc4f97c51f21",
+      "max_peak": 0.00164,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48102,
+      "shuffled": true,
+      "placement": "distributed",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "9cd16a9498865cc3b083cdb2d3c5537acf4de0518c3d45385a690fa91b341437",
+      "electrode_sha256": "60687ed5b25722988835328c653364f6382d0a6f3c8a81d75bfade244d6bbd01",
+      "max_peak": 0.00183,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 4
+    },
+    {
+      "seed": 48102,
+      "shuffled": true,
+      "placement": "local",
+      "gains": [
+        4,
+        8,
+        1
+      ],
+      "topology": "9cd16a9498865cc3b083cdb2d3c5537acf4de0518c3d45385a690fa91b341437",
+      "electrode_sha256": "ca574b5c079b916eccefc9301d13aafbf3cf260e7463965276e0bc4f97c51f21",
+      "max_peak": 0.00183,
+      "test_count": 16,
+      "early_correct": 4,
+      "late_correct": 5
+    }
+  ]
+}

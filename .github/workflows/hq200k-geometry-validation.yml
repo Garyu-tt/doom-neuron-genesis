@@ -1,0 +1,36 @@
+name: HQ200K R18 geometry validation
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/hq200k_geometry_validation.py'
+      - '.github/workflows/hq200k-geometry-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        seed: [58201, 58202, 58203]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.4.6
+      - run: python -u benchmarks/hq200k_geometry_validation.py --seed ${{ matrix.seed }} --output geometry.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: geometry-validation-${{ matrix.seed }}
+          path: geometry.json
+          retention-days: 14
