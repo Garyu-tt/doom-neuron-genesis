@@ -23,7 +23,7 @@ from hq200k_backend import HQ200K
 from training_server import PPOConfig, PPOTrainer
 
 
-def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1.):
+def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single"):
     output.mkdir(parents=True, exist_ok=False)
     random.seed(seed)
     np.random.seed(seed)
@@ -37,7 +37,7 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1.):
     text = re.sub(r"(?m)^episode_timeout\s*=.*$","episode_timeout = 128",text)
     cfg.write_text(text)
     brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled",
-                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain)
+                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode)
     args = SimpleNamespace(stim_port=12345,spike_port=12346,event_port=12347,
                            feedback_port=12348,max_steps=1000,idle_timeout=30,
                            artifact_wait_ms=50,collect_window_ms=50)
@@ -131,6 +131,7 @@ if __name__=="__main__":
     p.add_argument("--batches",type=int,choices=(1,2,3,4),default=2)
     p.add_argument("--excitation-gain",type=float,default=1.)
     p.add_argument("--inhibition-gain",type=float,default=1.)
+    p.add_argument("--stimulus-mode",choices=("single","rate"),default="single")
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain)
+    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode)
