@@ -24,7 +24,7 @@ class TransportTest(unittest.TestCase):
 
     def test_wrong_model(self):
         with self.assertRaises(ValueError):
-            validate_metadata({"architecture": "HCP800", "regions": 800,
+            validate_metadata({"architecture": "HQ200K", "regions": 7,
                                "resident_neurons": 500_000, "topology_sha256": "test"})
 
     def test_invalid_packet(self):
