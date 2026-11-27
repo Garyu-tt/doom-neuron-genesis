@@ -105,5 +105,25 @@ class HQTest(unittest.TestCase):
         b.feedback("reward",[23,24,26],20,2,30,False,"test")
         np.testing.assert_array_equal(b.w[rows,slots],new)
 
+    def test_electrode_geometry_matches_calibration(self):
+        from benchmarks.hq200k_geometry_validation import patch_electrodes
+        import hashlib
+        reference=HQ200K(plasticity=False)
+        for patches in (1,2,4):
+            b=HQ200K(plasticity=False,electrode_patches=patches)
+            np.testing.assert_array_equal(b.electrodes,patch_electrodes(b.seed,patches))
+            self.assertEqual(np.unique(b.electrodes).size,2048)
+            self.assertEqual(b.initial_hash,reference.initial_hash)
+            self.assertEqual(b.metadata()["electrode_patches"],patches)
+            self.assertEqual(b.metadata()["electrode_sha256"],hashlib.sha256(b.electrodes.astype("<i8").tobytes()).hexdigest())
+            for i,(lo,hi) in enumerate(zip(BOUNDS[:-1],BOUNDS[1:])):
+                mask=(b.electrodes>=lo)&(b.electrodes<hi)
+                self.assertTrue(np.all(mask.sum(axis=1)==(5 if i<4 else 4)))
+                self.assertEqual(np.unique((b.electrodes[mask]-lo)//1024).size,patches)
+            # The geometry RNG must not affect the initial spontaneous-noise sequence.
+            np.testing.assert_array_equal(b.rng.integers(N,size=64),HQ200K(plasticity=False).rng.integers(N,size=64))
+        with self.assertRaises(ValueError):
+            HQ200K(electrode_patches=3)
+
 if __name__=="__main__":
     unittest.main()
