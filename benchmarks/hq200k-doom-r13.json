@@ -1,0 +1,1787 @@
+{
+  "source_run": "https://github.com/Garyu-tt/doom-neuron-genesis/actions/runs/46034639017",
+  "scope": "three seeds, trainable external PPO, exploratory paired pilot",
+  "summary": {
+    "budgeted": {
+      "episodes": 12,
+      "reward": -8660,
+      "kills": 1,
+      "l1": 309.35904451832175,
+      "steps": 1536,
+      "mean_reward": -721.6666666666666
+    },
+    "legacy": {
+      "episodes": 12,
+      "reward": -8500,
+      "kills": 3,
+      "l1": 18654.375783034717,
+      "steps": 1527,
+      "mean_reward": -708.3333333333334
+    },
+    "frozen": {
+      "episodes": 12,
+      "reward": -8550,
+      "kills": 2,
+      "l1": 0,
+      "steps": 1536,
+      "mean_reward": -712.5
+    }
+  },
+  "results": [
+    {
+      "status": "bounded_training_pilot",
+      "arm": "structured",
+      "seed": 37421,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        98.802734375,
+        4.0078125,
+        4.076171875,
+        4.291015625,
+        4.09765625,
+        5.353515625,
+        5.294921875,
+        4.115234375
+      ],
+      "raw_nonzero_fraction": 0.620361328125,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "b432d653e3c8a590135435d572cf10edf6288afd78732b5fdb8a38eebd7291cb",
+        "seed": 37421,
+        "shuffled": false,
+        "plasticity": true,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "budgeted",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 11101908,
+        "plasticity_updates": 6799921,
+        "feedback_events": 106,
+        "input_pulses": [
+          1164,
+          1134,
+          1125,
+          1145,
+          1130,
+          1102,
+          1114,
+          1082
+        ],
+        "plasticity_l1": 97.26456245966256,
+        "plasticity_events": 106
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -730
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.5986328125,
+          "decoder_spike_mean": [
+            98.1640625,
+            4.03125,
+            3.8359375,
+            4.3125,
+            4.078125,
+            5.28125,
+            5.109375,
+            4.03125
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -730,
+            -700
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6513671875,
+          "decoder_spike_mean": [
+            100.2890625,
+            5.03125,
+            5.1796875,
+            5.3671875,
+            5.203125,
+            6.671875,
+            6.7265625,
+            5.171875
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -730,
+            -700,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.619140625,
+          "decoder_spike_mean": [
+            97.828125,
+            3.6484375,
+            3.796875,
+            3.859375,
+            3.640625,
+            4.984375,
+            4.703125,
+            3.8125
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -730,
+            -700,
+            -750,
+            -710
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6123046875,
+          "decoder_spike_mean": [
+            98.9296875,
+            3.3203125,
+            3.4921875,
+            3.625,
+            3.46875,
+            4.4765625,
+            4.640625,
+            3.4453125
+          ]
+        }
+      ],
+      "wall_s": 61.134170193000045,
+      "cpu_s": 30.337547343000004,
+      "peak_rss_kib": 1250628
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "structured",
+      "seed": 37423,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        97.2734375,
+        4.638671875,
+        4.416015625,
+        4.5625,
+        4.578125,
+        6.12109375,
+        6.251953125,
+        4.66015625
+      ],
+      "raw_nonzero_fraction": 0.629638671875,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "cfd7fb1cfdaedbb93ffaad4a963166b713c7ee5276f4793190c15550b144f38c",
+        "seed": 37423,
+        "shuffled": false,
+        "plasticity": true,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "budgeted",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 11619397,
+        "plasticity_updates": 8577966,
+        "feedback_events": 115,
+        "input_pulses": [
+          1122,
+          1073,
+          1133,
+          1121,
+          1099,
+          1110,
+          1106,
+          1154
+        ],
+        "plasticity_l1": 108.51797600556165,
+        "plasticity_events": 115
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -750
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6171875,
+          "decoder_spike_mean": [
+            96.5390625,
+            5.140625,
+            4.875,
+            5.1640625,
+            5.109375,
+            6.6953125,
+            6.8515625,
+            5.234375
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -750,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6484375,
+          "decoder_spike_mean": [
+            97.1953125,
+            4.53125,
+            4.4296875,
+            4.4296875,
+            4.3359375,
+            6,
+            6.1171875,
+            4.6171875
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -750,
+            -750,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6298828125,
+          "decoder_spike_mean": [
+            99.09375,
+            4.59375,
+            4.15625,
+            4.25,
+            4.515625,
+            5.7890625,
+            6.0234375,
+            4.390625
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -750,
+            -750,
+            -750,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.623046875,
+          "decoder_spike_mean": [
+            96.265625,
+            4.2890625,
+            4.203125,
+            4.40625,
+            4.3515625,
+            6,
+            6.015625,
+            4.3984375
+          ]
+        }
+      ],
+      "wall_s": 66.14970967,
+      "cpu_s": 34.277737624,
+      "peak_rss_kib": 1241416
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "structured",
+      "seed": 37422,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 503,
+      "packets": 503,
+      "raw_spike_mean": [
+        99.09741550695826,
+        3.457256461232604,
+        3.5825049701789267,
+        3.78727634194831,
+        3.831013916500994,
+        4.998011928429423,
+        4.805168986083499,
+        3.570576540755467
+      ],
+      "raw_nonzero_fraction": 0.6163021868787276,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "f976bf8582b41b4282fc592a6f51f6d681faa326047612b2b6df1a762b133200",
+        "seed": 37422,
+        "shuffled": false,
+        "plasticity": true,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "legacy",
+        "plasticity_budget": 2,
+        "steps": 503,
+        "ticks": 5030,
+        "spikes": 8673740,
+        "plasticity_updates": 19174117,
+        "feedback_events": 113,
+        "input_pulses": [
+          1104,
+          1147,
+          1111,
+          1104,
+          1126,
+          1090,
+          1071,
+          1137
+        ],
+        "plasticity_l1": 8274.647555087111,
+        "plasticity_events": 113
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -750
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.626953125,
+          "decoder_spike_mean": [
+            99.6640625,
+            3.84375,
+            4.21875,
+            4.3125,
+            4.171875,
+            5.484375,
+            5.640625,
+            3.8671875
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -750,
+            -740
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.607421875,
+          "decoder_spike_mean": [
+            97.375,
+            3.9140625,
+            3.7265625,
+            4.234375,
+            4.1796875,
+            5.78125,
+            5.203125,
+            3.875
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -750,
+            -740,
+            -730
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6328125,
+          "decoder_spike_mean": [
+            99.609375,
+            2.859375,
+            2.9296875,
+            3.0390625,
+            3.3515625,
+            4.21875,
+            3.984375,
+            3.1484375
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 503,
+          "episodes": 4,
+          "episode_rewards": [
+            -750,
+            -740,
+            -730,
+            -630
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            119
+          ],
+          "killcounts": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "decoder_nonzero_fraction": 0.5966386554621849,
+          "decoder_spike_mean": [
+            99.7899169921875,
+            3.193277359008789,
+            3.445378065109253,
+            3.5462183952331543,
+            3.605041980743408,
+            4.470588207244873,
+            4.361344337463379,
+            3.3781511783599854
+          ]
+        }
+      ],
+      "wall_s": 57.093417244999955,
+      "cpu_s": 17.764201669000002,
+      "peak_rss_kib": 1222576
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "frozen",
+      "seed": 37423,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        97.87109375,
+        4.822265625,
+        4.646484375,
+        4.595703125,
+        4.64453125,
+        6.38671875,
+        6.416015625,
+        4.86328125
+      ],
+      "raw_nonzero_fraction": 0.62060546875,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "cfd7fb1cfdaedbb93ffaad4a963166b713c7ee5276f4793190c15550b144f38c",
+        "seed": 37423,
+        "shuffled": false,
+        "plasticity": false,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "legacy",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 11844644,
+        "plasticity_updates": 0,
+        "feedback_events": 125,
+        "input_pulses": [
+          1147,
+          1110,
+          1117,
+          1115,
+          1123,
+          1100,
+          1110,
+          1129
+        ],
+        "plasticity_l1": 0,
+        "plasticity_events": 0
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -660
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            1
+          ],
+          "decoder_nonzero_fraction": 0.6298828125,
+          "decoder_spike_mean": [
+            97.859375,
+            5.8203125,
+            5.625,
+            5.9375,
+            5.5625,
+            7.6640625,
+            7.5546875,
+            5.8828125
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -660,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            1,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6201171875,
+          "decoder_spike_mean": [
+            98.1796875,
+            4.4140625,
+            4.3203125,
+            4.03125,
+            4.2734375,
+            5.84375,
+            5.8984375,
+            4.5
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -660,
+            -750,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            1,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.61328125,
+          "decoder_spike_mean": [
+            99.515625,
+            4.5859375,
+            4.359375,
+            4.1953125,
+            4.3046875,
+            6.1328125,
+            6.2265625,
+            4.5546875
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -660,
+            -750,
+            -750,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.619140625,
+          "decoder_spike_mean": [
+            95.9296875,
+            4.46875,
+            4.28125,
+            4.21875,
+            4.4375,
+            5.90625,
+            5.984375,
+            4.515625
+          ]
+        }
+      ],
+      "wall_s": 62.454424489999994,
+      "cpu_s": 23.919746975000002,
+      "peak_rss_kib": 1216268
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "structured",
+      "seed": 37421,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        97.572265625,
+        3.638671875,
+        3.810546875,
+        4.041015625,
+        3.80078125,
+        5.001953125,
+        4.86328125,
+        3.703125
+      ],
+      "raw_nonzero_fraction": 0.618408203125,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "b432d653e3c8a590135435d572cf10edf6288afd78732b5fdb8a38eebd7291cb",
+        "seed": 37421,
+        "shuffled": false,
+        "plasticity": true,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "legacy",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 10349459,
+        "plasticity_updates": 8201216,
+        "feedback_events": 101,
+        "input_pulses": [
+          1208,
+          1116,
+          1145,
+          1111,
+          1106,
+          1090,
+          1101,
+          1109
+        ],
+        "plasticity_l1": 4701.457184833009,
+        "plasticity_events": 101
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -750
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.595703125,
+          "decoder_spike_mean": [
+            98.96875,
+            3.640625,
+            3.7890625,
+            4.0390625,
+            3.921875,
+            5.0234375,
+            4.8046875,
+            3.640625
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -750,
+            -630
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            1
+          ],
+          "decoder_nonzero_fraction": 0.6162109375,
+          "decoder_spike_mean": [
+            96.5703125,
+            3.8828125,
+            4.109375,
+            4.359375,
+            4.015625,
+            5.328125,
+            5.1953125,
+            3.890625
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -750,
+            -630,
+            -560
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            1,
+            1
+          ],
+          "decoder_nonzero_fraction": 0.6328125,
+          "decoder_spike_mean": [
+            97.40625,
+            4.1796875,
+            4.21875,
+            4.5703125,
+            4.1015625,
+            5.890625,
+            5.4375,
+            4.1171875
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -750,
+            -630,
+            -560,
+            -730
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.62890625,
+          "decoder_spike_mean": [
+            97.34375,
+            2.8515625,
+            3.125,
+            3.1953125,
+            3.1640625,
+            3.765625,
+            4.015625,
+            3.1640625
+          ]
+        }
+      ],
+      "wall_s": 65.852557886,
+      "cpu_s": 32.009157478999995,
+      "peak_rss_kib": 1262432
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "frozen",
+      "seed": 37422,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        100.798828125,
+        4.521484375,
+        4.69921875,
+        4.861328125,
+        4.8046875,
+        6.41796875,
+        6.291015625,
+        4.61328125
+      ],
+      "raw_nonzero_fraction": 0.63525390625,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "f976bf8582b41b4282fc592a6f51f6d681faa326047612b2b6df1a762b133200",
+        "seed": 37422,
+        "shuffled": false,
+        "plasticity": false,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "legacy",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 11570266,
+        "plasticity_updates": 0,
+        "feedback_events": 112,
+        "input_pulses": [
+          1117,
+          1156,
+          1120,
+          1142,
+          1117,
+          1110,
+          1085,
+          1147
+        ],
+        "plasticity_l1": 0,
+        "plasticity_events": 0
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -740
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6494140625,
+          "decoder_spike_mean": [
+            103.1484375,
+            4.71875,
+            4.7421875,
+            4.984375,
+            4.7265625,
+            6.375,
+            6.640625,
+            4.625
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -740,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.634765625,
+          "decoder_spike_mean": [
+            101.7890625,
+            4.640625,
+            4.8125,
+            4.96875,
+            4.96875,
+            6.5859375,
+            6.21875,
+            4.765625
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -740,
+            -750,
+            -700
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.63671875,
+          "decoder_spike_mean": [
+            100.7734375,
+            4.1875,
+            4.59375,
+            4.5234375,
+            4.5859375,
+            6.109375,
+            5.90625,
+            4.4921875
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -740,
+            -750,
+            -700,
+            -730
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6201171875,
+          "decoder_spike_mean": [
+            97.484375,
+            4.5390625,
+            4.6484375,
+            4.96875,
+            4.9375,
+            6.6015625,
+            6.3984375,
+            4.5703125
+          ]
+        }
+      ],
+      "wall_s": 59.48652774300001,
+      "cpu_s": 22.012701103,
+      "peak_rss_kib": 1231504
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "structured",
+      "seed": 37423,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        95.251953125,
+        3.634765625,
+        3.48046875,
+        3.64453125,
+        3.51171875,
+        4.904296875,
+        5.02734375,
+        3.759765625
+      ],
+      "raw_nonzero_fraction": 0.619384765625,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "cfd7fb1cfdaedbb93ffaad4a963166b713c7ee5276f4793190c15550b144f38c",
+        "seed": 37423,
+        "shuffled": false,
+        "plasticity": true,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "legacy",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 9265828,
+        "plasticity_updates": 12561503,
+        "feedback_events": 115,
+        "input_pulses": [
+          1136,
+          1102,
+          1120,
+          1102,
+          1105,
+          1114,
+          1103,
+          1145
+        ],
+        "plasticity_l1": 5678.271043114597,
+        "plasticity_events": 115
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -750
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.625,
+          "decoder_spike_mean": [
+            95.6171875,
+            4.6875,
+            4.5859375,
+            4.484375,
+            4.3984375,
+            5.9609375,
+            6.3828125,
+            4.765625
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -750,
+            -730
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6162109375,
+          "decoder_spike_mean": [
+            94.890625,
+            3.5546875,
+            3.4609375,
+            3.46875,
+            3.34375,
+            4.9140625,
+            4.9921875,
+            3.4765625
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -750,
+            -730,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.609375,
+          "decoder_spike_mean": [
+            92.421875,
+            3.0546875,
+            2.78125,
+            3.203125,
+            2.921875,
+            4.2265625,
+            4.1484375,
+            3.2265625
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -750,
+            -730,
+            -750,
+            -750
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.626953125,
+          "decoder_spike_mean": [
+            98.078125,
+            3.2421875,
+            3.09375,
+            3.421875,
+            3.3828125,
+            4.515625,
+            4.5859375,
+            3.5703125
+          ]
+        }
+      ],
+      "wall_s": 65.82885634000002,
+      "cpu_s": 32.314915243,
+      "peak_rss_kib": 1211456
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "frozen",
+      "seed": 37421,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        100.29296875,
+        4.23046875,
+        4.361328125,
+        4.66796875,
+        4.470703125,
+        5.89453125,
+        5.62109375,
+        4.345703125
+      ],
+      "raw_nonzero_fraction": 0.62158203125,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "b432d653e3c8a590135435d572cf10edf6288afd78732b5fdb8a38eebd7291cb",
+        "seed": 37421,
+        "shuffled": false,
+        "plasticity": false,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "legacy",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 11598165,
+        "plasticity_updates": 0,
+        "feedback_events": 98,
+        "input_pulses": [
+          1188,
+          1157,
+          1144,
+          1091,
+          1123,
+          1122,
+          1138,
+          1115
+        ],
+        "plasticity_l1": 0,
+        "plasticity_events": 0
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -740
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.59375,
+          "decoder_spike_mean": [
+            99.9453125,
+            4.4140625,
+            4.53125,
+            4.78125,
+            4.4921875,
+            6.0390625,
+            5.640625,
+            4.2890625
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -740,
+            -670
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.640625,
+          "decoder_spike_mean": [
+            96.2734375,
+            4.4765625,
+            4.7421875,
+            4.9453125,
+            4.8671875,
+            6.2890625,
+            6.0546875,
+            4.578125
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -740,
+            -670,
+            -700
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.62109375,
+          "decoder_spike_mean": [
+            103.8671875,
+            4.0625,
+            3.9921875,
+            4.5390625,
+            4.2734375,
+            5.6328125,
+            5.25,
+            4.1484375
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -740,
+            -670,
+            -700,
+            -610
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "decoder_nonzero_fraction": 0.630859375,
+          "decoder_spike_mean": [
+            101.0859375,
+            3.96875,
+            4.1796875,
+            4.40625,
+            4.25,
+            5.6171875,
+            5.5390625,
+            4.3671875
+          ]
+        }
+      ],
+      "wall_s": 59.16935987500001,
+      "cpu_s": 20.682096075,
+      "peak_rss_kib": 1232732
+    },
+    {
+      "status": "bounded_training_pilot",
+      "arm": "structured",
+      "seed": 37422,
+      "scenario_sha256": "e4f9f5e6069b6138790e1cb15d723e03f69857ea7199fce80bc2195a05f4166a",
+      "original_config_sha256": "ae2cfc6b13a7f9d2c4e490dbf23295ed6e4970afc8807c2eb3d0a56db68cc2ad",
+      "episode_timeout_tics": 512,
+      "rollout_steps_min": 64,
+      "vizdoom": "1.3.0.dev2",
+      "numpy": "2.4.6",
+      "torch": "2.10.0+cpu",
+      "upstream_ppo": true,
+      "random_control_poisson_mean": 1,
+      "steps": 512,
+      "packets": 512,
+      "raw_spike_mean": [
+        99.455078125,
+        4.677734375,
+        4.814453125,
+        4.826171875,
+        5.00390625,
+        6.625,
+        6.380859375,
+        4.78125
+      ],
+      "raw_nonzero_fraction": 0.63427734375,
+      "neural": {
+        "architecture": "HQ200K",
+        "regions": 7,
+        "region_sizes": {
+          "cortex": 90000,
+          "cerebellum": 28000,
+          "hippocampus": 20000,
+          "thalamus": 20000,
+          "basal_ganglia": 16000,
+          "brainstem": 14000,
+          "limbic": 12000
+        },
+        "resident_neurons": 200000,
+        "synapse_slots": 6400000,
+        "topology_sha256": "f976bf8582b41b4282fc592a6f51f6d681faa326047612b2b6df1a762b133200",
+        "seed": 37422,
+        "shuffled": false,
+        "plasticity": true,
+        "tick_ms": 10,
+        "electrode_cells": 32,
+        "excitation_gain": 4,
+        "inhibition_gain": 8,
+        "stimulus_mode": "rate",
+        "adaptation_strength": 1,
+        "adaptation_tau_ms": 200,
+        "plasticity_mode": "budgeted",
+        "plasticity_budget": 2,
+        "steps": 512,
+        "ticks": 5120,
+        "spikes": 11882163,
+        "plasticity_updates": 18611659,
+        "feedback_events": 105,
+        "input_pulses": [
+          1114,
+          1162,
+          1119,
+          1133,
+          1149,
+          1106,
+          1076,
+          1154
+        ],
+        "plasticity_l1": 103.57650605309755,
+        "plasticity_events": 105
+      },
+      "progress": [
+        {
+          "batch": 1,
+          "steps": 128,
+          "episodes": 1,
+          "episode_rewards": [
+            -740
+          ],
+          "episode_lengths": [
+            128
+          ],
+          "killcounts": [
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6357421875,
+          "decoder_spike_mean": [
+            102.921875,
+            4.6171875,
+            4.703125,
+            4.703125,
+            4.796875,
+            6.328125,
+            6.2265625,
+            4.484375
+          ]
+        },
+        {
+          "batch": 2,
+          "steps": 256,
+          "episodes": 2,
+          "episode_rewards": [
+            -740,
+            -620
+          ],
+          "episode_lengths": [
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            1
+          ],
+          "decoder_nonzero_fraction": 0.6484375,
+          "decoder_spike_mean": [
+            102.6640625,
+            4.890625,
+            4.9453125,
+            5,
+            5.046875,
+            6.875,
+            6.5546875,
+            5.0859375
+          ]
+        },
+        {
+          "batch": 3,
+          "steps": 384,
+          "episodes": 3,
+          "episode_rewards": [
+            -740,
+            -620,
+            -690
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            1,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.640625,
+          "decoder_spike_mean": [
+            96.09375,
+            4.75,
+            5,
+            5.0703125,
+            5.2578125,
+            6.875,
+            6.515625,
+            5.046875
+          ]
+        },
+        {
+          "batch": 4,
+          "steps": 512,
+          "episodes": 4,
+          "episode_rewards": [
+            -740,
+            -620,
+            -690,
+            -720
+          ],
+          "episode_lengths": [
+            128,
+            128,
+            128,
+            128
+          ],
+          "killcounts": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "decoder_nonzero_fraction": 0.6123046875,
+          "decoder_spike_mean": [
+            96.140625,
+            4.453125,
+            4.609375,
+            4.53125,
+            4.9140625,
+            6.421875,
+            6.2265625,
+            4.5078125
+          ]
+        }
+      ],
+      "wall_s": 66.26827202300001,
+      "cpu_s": 35.366719821000004,
+      "peak_rss_kib": 1203712
+    }
+  ]
+}
