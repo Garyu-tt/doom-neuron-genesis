@@ -23,7 +23,9 @@ from hq200k_backend import HQ200K
 from training_server import PPOConfig, PPOTrainer
 
 
-def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single"):
+def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32):
+    if not (1<=batches<=16 and 128<=episode_tics<=4200 and 32<=rollout_steps<=256):
+        raise ValueError("bounded experiment parameters required")
     output.mkdir(parents=True, exist_ok=False)
     random.seed(seed)
     np.random.seed(seed)
@@ -34,14 +36,14 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
     cfg = output / "smoke.cfg"
     text = source.read_text()
     text = re.sub(r"(?m)^doom_scenario_path\s*=.*$",f"doom_scenario_path = {os.path.relpath(wad, cfg.parent.resolve())}",text)
-    text = re.sub(r"(?m)^episode_timeout\s*=.*$","episode_timeout = 128",text)
+    text = re.sub(r"(?m)^episode_timeout\s*=.*$",f"episode_timeout = {episode_tics}",text)
     cfg.write_text(text)
     brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled",
-                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode)
+                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode, adaptation_strength=adaptation_strength)
     args = SimpleNamespace(stim_port=12345,spike_port=12346,event_port=12347,
-                           feedback_port=12348,max_steps=1000,idle_timeout=30,
+                           feedback_port=12348,max_steps=batches*(rollout_steps+episode_tics)+1,idle_timeout=30,
                            artifact_wait_ms=50,collect_window_ms=50)
-    config = PPOConfig(doom_config=str(cfg),steps_per_update=32,batch_size=32,num_epochs=1,
+    config = PPOConfig(doom_config=str(cfg),steps_per_update=rollout_steps,batch_size=32,num_epochs=1,
                        max_episodes=10,checkpoint_dir=str(output/"checkpoints"),
                        log_dir=str(output/"tensorboard"),vis_host="127.0.0.1",
                        episode_reset_delay_s=0.0, decoder_ablation_mode="none")
@@ -82,9 +84,9 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
         for i in range(batches):
             prior=trainer.total_steps
             rx=len(received)
-            rollout=trainer._collect_rollouts_hardware(32,10)
+            rollout=trainer._collect_rollouts_hardware(rollout_steps,10)
             actual=trainer.total_steps-prior
-            if actual<32 or len(received)-rx!=actual or errors:
+            if actual<rollout_steps or len(received)-rx!=actual or errors:
                 raise RuntimeError(f"incomplete rollout: steps={actual}, packets={len(received)-rx}, errors={errors}")
             features=rollout["spike_features"].detach().cpu().numpy()
             trainer.update_policy(rollout)
@@ -98,10 +100,10 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
         thread.join(5)
         if thread.is_alive() or errors or brain.steps!=len(received):
             raise RuntimeError(f"bridge did not complete cleanly: {errors}, {brain.steps}/{len(received)}")
-        result={"status":"smoke_only","arm":arm,"seed":seed,
+        result={"status":"smoke_only" if batches<=4 and episode_tics==128 else "bounded_training_pilot","arm":arm,"seed":seed,
                 "scenario_sha256":hashlib.sha256(wad.read_bytes()).hexdigest(),
                 "original_config_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),
-                "episode_timeout_tics":128,"vizdoom":vizdoom.__version__,
+                "episode_timeout_tics":episode_tics,"rollout_steps_min":rollout_steps,"vizdoom":vizdoom.__version__,
                 "numpy":np.__version__,"torch":torch.__version__,
                 "upstream_ppo":True,"random_control_poisson_mean":1.0,
                 "steps":trainer.total_steps,"packets":len(received),
@@ -128,10 +130,13 @@ if __name__=="__main__":
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--arm",choices=("structured","frozen","shuffled","zero","random"),default="structured")
     p.add_argument("--seed",type=int,default=37421)
-    p.add_argument("--batches",type=int,choices=(1,2,3,4),default=2)
+    p.add_argument("--batches",type=int,choices=range(1,17),default=2)
     p.add_argument("--excitation-gain",type=float,default=1.)
     p.add_argument("--inhibition-gain",type=float,default=1.)
     p.add_argument("--stimulus-mode",choices=("single","rate"),default="single")
+    p.add_argument("--adaptation-strength",type=float,default=0.)
+    p.add_argument("--episode-tics",type=int,default=128)
+    p.add_argument("--rollout-steps",type=int,default=32)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode)
+    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps)
