@@ -23,7 +23,18 @@ from hq200k_backend import HQ200K
 from training_server import PPOConfig, PPOTrainer
 
 
-def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32, plasticity_mode="legacy", plasticity_budget=2.):
+def policy_hash(policy):
+    h=hashlib.sha256()
+    for name,tensor in sorted(policy.state_dict().items()):
+        value=tensor.detach().cpu().contiguous()
+        h.update(name.encode())
+        h.update(str(value.dtype).encode())
+        h.update(str(tuple(value.shape)).encode())
+        h.update(value.numpy().tobytes())
+    return h.hexdigest()
+
+
+def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32, plasticity_mode="legacy", plasticity_budget=2., fixed_interface=False):
     if not (1<=batches<=16 and 128<=episode_tics<=4200 and 32<=rollout_steps<=256):
         raise ValueError("bounded experiment parameters required")
     output.mkdir(parents=True, exist_ok=False)
@@ -46,8 +57,13 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
     config = PPOConfig(doom_config=str(cfg),steps_per_update=rollout_steps,batch_size=32,num_epochs=1,
                        max_episodes=10,checkpoint_dir=str(output/"checkpoints"),
                        log_dir=str(output/"tensorboard"),vis_host="127.0.0.1",
-                       episode_reset_delay_s=0.0, decoder_ablation_mode="none")
+                       episode_reset_delay_s=0.0, decoder_ablation_mode="none",
+                       center_spike_features=not fixed_interface)
     trainer = PPOTrainer(config, tick_frequency_hz=10, show_window=False, device="cpu")
+    if fixed_interface:
+        trainer.policy.eval()
+        trainer.policy.requires_grad_(False)
+    initial_policy_hash=policy_hash(trainer.policy)
     trainer.strict_hardware_collection = True
     trainer.env.game.set_seed(seed)
     trainer.setup_udp_sockets()
@@ -93,7 +109,10 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
             if trainer.total_episodes <= episodes_before:
                 raise RuntimeError("rollout ended without a completed episode")
             features=rollout["spike_features"].detach().cpu().numpy()
-            trainer.update_policy(rollout)
+            if not fixed_interface:
+                trainer.update_policy(rollout)
+            elif policy_hash(trainer.policy)!=initial_policy_hash:
+                raise RuntimeError("fixed interface state changed")
             progress.append({"batch":i+1,"steps":trainer.total_steps,"episodes":trainer.total_episodes,
                              "episode_rewards":list(trainer.episode_rewards),
                              "episode_lengths":list(trainer.episode_lengths),
@@ -109,7 +128,8 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
                 "original_config_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),
                 "episode_timeout_tics":episode_tics,"rollout_steps_min":rollout_steps,"vizdoom":vizdoom.__version__,
                 "numpy":np.__version__,"torch":torch.__version__,
-                "upstream_ppo":True,"random_control_poisson_mean":1.0,
+                "upstream_ppo":not fixed_interface,"fixed_interface":fixed_interface,
+                "initial_policy_sha256":initial_policy_hash,"final_policy_sha256":policy_hash(trainer.policy),"random_control_poisson_mean":1.0,
                 "steps":trainer.total_steps,"packets":len(received),
                 "raw_spike_mean":np.mean(received,axis=0).tolist(),
                 "raw_nonzero_fraction":float(np.count_nonzero(received)/np.size(received)),
@@ -143,6 +163,7 @@ if __name__=="__main__":
     p.add_argument("--rollout-steps",type=int,default=32)
     p.add_argument("--plasticity-mode",choices=("legacy","budgeted"),default="legacy")
     p.add_argument("--plasticity-budget",type=float,default=2.)
+    p.add_argument("--fixed-interface",action="store_true")
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps,a.plasticity_mode,a.plasticity_budget)
+    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps,a.plasticity_mode,a.plasticity_budget,a.fixed_interface)
