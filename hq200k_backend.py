@@ -71,7 +71,12 @@ def graph_hash(dst, w):
 
 
 class HQ200K:
-    def __init__(self, seed=37421, plasticity=True, shuffled=False):
+    def __init__(self, seed=37421, plasticity=True, shuffled=False, excitation_gain=1., inhibition_gain=1.):
+        for gain in (excitation_gain, inhibition_gain):
+            if isinstance(gain, bool) or not isinstance(gain,(int,float)) or not math.isfinite(gain) or not 0 < gain <= 8:
+                raise ValueError('gain must be finite, positive and <=8')
+        self.excitation_gain = float(excitation_gain)
+        self.inhibition_gain = float(inhibition_gain)
         self.dst, self.w = build_graph(seed, shuffled)
         self.initial_hash = graph_hash(self.dst, self.w)
         self.seed, self.shuffled, self.plasticity = seed, shuffled, plasticity
@@ -96,7 +101,8 @@ class HQ200K:
                 "region_sizes":dict(zip(NAMES,SIZES)), "resident_neurons":len(self.v),
                 "synapse_slots":int(self.dst.size),"topology_sha256":self.initial_hash,
                 "seed":self.seed,"shuffled":self.shuffled,"plasticity":self.plasticity,
-                "tick_ms":TICK_MS,"electrode_cells":self.electrodes.shape[1]}
+                "tick_ms":TICK_MS,"electrode_cells":self.electrodes.shape[1],
+                "excitation_gain":self.excitation_gain,"inhibition_gain":self.inhibition_gain}
 
     def _tick(self, injection):
         # Original HQ500M leak, threshold, refractory and weight scale.
@@ -114,7 +120,10 @@ class HQ200K:
         self.refractory[firing] = 2
         self.current.fill(0)
         if len(firing):
-            np.add.at(self.current, self.dst[firing].ravel(), self.w[firing].ravel())
+            weights = self.w[firing]
+            if self.excitation_gain != 1. or self.inhibition_gain != 1.:
+                weights = weights * np.where(weights > 0, self.excitation_gain, self.inhibition_gain).astype(np.float32)
+            np.add.at(self.current, self.dst[firing].ravel(), weights.ravel())
         if self.plasticity:
             # Causal pre(t-1) -> post(t) eligibility, limited to last 100 virtual ms.
             mask = np.zeros(N, bool)
@@ -199,12 +208,13 @@ def factory(topology_path, neurons, seed):
     if neurons!=N:
         raise ValueError("HQ200K requires 200000 resident neurons")
     cfg = json.loads(Path(topology_path).read_text())
-    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256"}:
+    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256","excitation_gain","inhibition_gain"}:
         raise ValueError("unknown HQ200K config field")
     for key in ("plasticity","shuffled"):
         if key in cfg and type(cfg[key]) is not bool:
             raise ValueError("expected boolean config")
-    brain = HQ200K(seed,cfg.get("plasticity",True),cfg.get("shuffled",False))
+    brain = HQ200K(seed,cfg.get("plasticity",True),cfg.get("shuffled",False),
+                   cfg.get("excitation_gain",1.),cfg.get("inhibition_gain",1.))
     if cfg.get("expected_sha256") and cfg["expected_sha256"]!=brain.initial_hash:
         raise ValueError("topology hash mismatch")
     return brain
