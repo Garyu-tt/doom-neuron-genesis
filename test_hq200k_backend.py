@@ -60,5 +60,22 @@ class HQTest(unittest.TestCase):
             b.feedback_queue.clear()
             b.eligibility.clear()
 
+    def test_rate_encoder_preserves_fractional_phase(self):
+        b=HQ200K(stimulus_mode="rate",plasticity=False)
+        # Instrument only pulse delivery, not neural output.
+        b._tick=lambda injection: np.zeros(64,dtype=np.int64)
+        for _ in range(10):
+            b.stimulate([4.,40.,0.,10.,20.,30.,5.,15.],[2.]*8,GROUPS,50,50)
+        self.assertEqual(b.input_pulses.tolist(),[4,40,0,10,20,30,5,15])
+        self.assertEqual(b.steps,10)
+        self.assertEqual(b.metadata()["stimulus_mode"],"rate")
+
+    def test_reference_single_pulse_unchanged(self):
+        b=HQ200K(plasticity=False)
+        b._tick=lambda injection: np.zeros(64,dtype=np.int64)
+        b.stimulate([4.]*8,[2.]*8,GROUPS,50,50)
+        b.stimulate([40.]*8,[2.]*8,GROUPS,50,50)
+        self.assertEqual(b.input_pulses.tolist(),[2]*8)
+
 if __name__=="__main__":
     unittest.main()
