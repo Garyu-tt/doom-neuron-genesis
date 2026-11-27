@@ -34,7 +34,7 @@ def policy_hash(policy):
     return h.hexdigest()
 
 
-def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32, plasticity_mode="legacy", plasticity_budget=2., fixed_interface=False):
+def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32, plasticity_mode="legacy", plasticity_budget=2., fixed_interface=False, weights_path=None, save_weights=False, evaluation_seed=None):
     if not (1<=batches<=16 and 128<=episode_tics<=4200 and 32<=rollout_steps<=256):
         raise ValueError("bounded experiment parameters required")
     output.mkdir(parents=True, exist_ok=False)
@@ -51,6 +51,16 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
     cfg.write_text(text)
     brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled",
                    excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode, adaptation_strength=adaptation_strength, plasticity_mode=plasticity_mode, plasticity_budget=plasticity_budget)
+    if evaluation_seed is not None and (not fixed_interface or arm!="frozen"):
+        raise ValueError("held-out evaluation must freeze all weights")
+    if weights_path is not None:
+        with np.load(weights_path,allow_pickle=False) as data:
+            if str(data["topology_sha256"].item())!=brain.initial_hash:
+                raise ValueError("checkpoint topology mismatch")
+            weights=data["weights"]
+            if weights.shape!=brain.w.shape or weights.dtype!=brain.w.dtype or not np.isfinite(weights).all() or not np.array_equal(np.sign(weights),np.sign(brain.w)):
+                raise ValueError("invalid checkpoint weights")
+            brain.w[:]=weights
     args = SimpleNamespace(stim_port=12345,spike_port=12346,event_port=12347,
                            feedback_port=12348,max_steps=batches*(rollout_steps+episode_tics)+1,idle_timeout=30,
                            artifact_wait_ms=50,collect_window_ms=50)
@@ -66,7 +76,14 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
     initial_policy_hash=policy_hash(trainer.policy)
     initial_weight_hash=hashlib.sha256(brain.w.tobytes()).hexdigest()
     trainer.strict_hardware_collection = True
-    trainer.env.game.set_seed(seed)
+    if evaluation_seed is not None:
+        trainer._track_action_feedback=lambda *args,**kwargs: None
+        trainer._send_episode_feedback=lambda *args,**kwargs: None
+        random.seed(evaluation_seed)
+        np.random.seed(evaluation_seed)
+        torch.manual_seed(evaluation_seed)
+        brain.rng=np.random.default_rng(evaluation_seed ^ 0xA11CE)
+    trainer.env.game.set_seed(seed if evaluation_seed is None else evaluation_seed)
     trainer.setup_udp_sockets()
     errors=[]
     def worker():
@@ -128,7 +145,9 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
         final_weight_hash=hashlib.sha256(brain.w.tobytes()).hexdigest()
         if arm=="frozen" and final_weight_hash!=initial_weight_hash:
             raise RuntimeError("frozen neural weights changed")
-        result={"initial_neural_weights_sha256":initial_weight_hash,"final_neural_weights_sha256":final_weight_hash,"status":"smoke_only" if batches<=4 and episode_tics==128 else "bounded_training_pilot","arm":arm,"seed":seed,
+        if save_weights:
+            np.savez(output/"weights.npz",weights=brain.w,topology_sha256=brain.initial_hash)
+        result={"evaluation_seed":evaluation_seed,"evaluation_feedback_disabled":evaluation_seed is not None,"initial_neural_weights_sha256":initial_weight_hash,"final_neural_weights_sha256":final_weight_hash,"status":"smoke_only" if batches<=4 and episode_tics==128 else "bounded_training_pilot","arm":arm,"seed":seed,
                 "scenario_sha256":hashlib.sha256(wad.read_bytes()).hexdigest(),
                 "original_config_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),
                 "episode_timeout_tics":episode_tics,"rollout_steps_min":rollout_steps,"vizdoom":vizdoom.__version__,
@@ -169,6 +188,9 @@ if __name__=="__main__":
     p.add_argument("--plasticity-mode",choices=("legacy","budgeted"),default="legacy")
     p.add_argument("--plasticity-budget",type=float,default=2.)
     p.add_argument("--fixed-interface",action="store_true")
+    p.add_argument("--weights-path",type=Path)
+    p.add_argument("--save-weights",action="store_true")
+    p.add_argument("--evaluation-seed",type=int)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps,a.plasticity_mode,a.plasticity_budget,a.fixed_interface)
+    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps,a.plasticity_mode,a.plasticity_budget,a.fixed_interface,a.weights_path,a.save_weights,a.evaluation_seed)
