@@ -1,0 +1,36 @@
+name: HQ200K R16 credit assignment
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/hq200k_credit_probe.py'
+      - '.github/workflows/hq200k-credit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  credit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        seed: [37421, 37422, 37423]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.4.6
+      - run: python -u benchmarks/hq200k_credit_probe.py --seed ${{ matrix.seed }} --output credit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: credit-${{ matrix.seed }}
+          path: credit.json
+          retention-days: 14
