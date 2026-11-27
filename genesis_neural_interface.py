@@ -25,12 +25,12 @@ GROUPS = (
 
 
 def validate_metadata(meta):
-    if (meta.get("architecture") != "HCP800"
+    if (meta.get("architecture") != "HQ200K"
             or type(meta.get("resident_neurons")) is not int
             or meta["resident_neurons"] != 200_000
-            or meta.get("regions") != 800
+            or meta.get("regions") != 7
             or not meta.get("topology_sha256")):
-        raise ValueError("Require HCP800, 800 regions, 200000 resident neurons and topology hash")
+        raise ValueError("Require HQ200K, 7 regions, 200000 resident neurons and topology hash")
 
 
 def handle_stim(backend, packet, artifact_ms, collect_ms):
@@ -93,7 +93,7 @@ def serve(backend, args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--backend", required=True, help="Trusted installed module:factory; no fallback")
-    parser.add_argument("--topology", required=True, help="Existing HCP800 topology path")
+    parser.add_argument("--topology", required=True, help="Existing HQ200K topology path")
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--max-steps", type=int, default=1000)
     parser.add_argument("--idle-timeout", type=float, default=60)
