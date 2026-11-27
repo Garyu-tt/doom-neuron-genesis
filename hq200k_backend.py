@@ -71,7 +71,7 @@ def graph_hash(dst, w):
 
 
 class HQ200K:
-    def __init__(self, seed=37421, plasticity=True, shuffled=False, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., adaptation_tau_ms=200.):
+    def __init__(self, seed=37421, plasticity=True, shuffled=False, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., adaptation_tau_ms=200., plasticity_mode="legacy", plasticity_budget=2.):
         for gain in (excitation_gain, inhibition_gain):
             if isinstance(gain, bool) or not isinstance(gain,(int,float)) or not math.isfinite(gain) or not 0 < gain <= 8:
                 raise ValueError('gain must be finite, positive and <=8')
@@ -79,6 +79,12 @@ class HQ200K:
             raise ValueError('stimulus_mode must be single or rate')
         if any(isinstance(x,bool) or not isinstance(x,(int,float)) or not math.isfinite(x) for x in (adaptation_strength,adaptation_tau_ms)) or not 0 <= adaptation_strength <= 4 or not 20 <= adaptation_tau_ms <= 2000:
             raise ValueError("invalid adaptation parameters")
+        if plasticity_mode not in ("legacy","budgeted") or isinstance(plasticity_budget,bool) or not isinstance(plasticity_budget,(int,float)) or not math.isfinite(plasticity_budget) or not 0 < plasticity_budget <= 100:
+            raise ValueError("invalid plasticity budget")
+        self.plasticity_mode = plasticity_mode
+        self.plasticity_budget = float(plasticity_budget)
+        self.plasticity_l1 = 0.
+        self.plasticity_events = 0
         self.adaptation_strength = float(adaptation_strength)
         self.adaptation_tau_ms = float(adaptation_tau_ms)
         self.adaptation_decay = math.exp(-TICK_MS/self.adaptation_tau_ms)
@@ -114,7 +120,8 @@ class HQ200K:
                 "seed":self.seed,"shuffled":self.shuffled,"plasticity":self.plasticity,
                 "tick_ms":TICK_MS,"electrode_cells":self.electrodes.shape[1],
                 "excitation_gain":self.excitation_gain,"inhibition_gain":self.inhibition_gain,"stimulus_mode":self.stimulus_mode,
-                "adaptation_strength":self.adaptation_strength,"adaptation_tau_ms":self.adaptation_tau_ms}
+                "adaptation_strength":self.adaptation_strength,"adaptation_tau_ms":self.adaptation_tau_ms,
+                "plasticity_mode":self.plasticity_mode,"plasticity_budget":self.plasticity_budget}
 
     def _tick(self, injection):
         # Original HQ500M leak, threshold, refractory and weight scale.
@@ -214,11 +221,34 @@ class HQ200K:
         # Experimental reward-modulated local synaptic rule; no external action scores.
         sign = 1 if kind=="reward" and channels<=POS else -1 if kind=="reward" and channels<=NEG else 0
         if self.plasticity and sign:
-            for age,(rows,slots) in enumerate(reversed(self.eligibility)):
-                if len(rows):
-                    old = self.w[rows,slots]
-                    self.w[rows,slots] = np.sign(old)*np.clip(np.abs(old)+sign*0.001*(0.8**age),0.001,0.25)
-                    self.updates += len(rows)
+            self.plasticity_events += 1
+            if self.plasticity_mode == "budgeted":
+                # Coalesce repeated eligibility using its strongest recent trace.
+                ids=[]; strength=[]
+                for age,(rows,slots) in enumerate(reversed(self.eligibility)):
+                    if len(rows):
+                        ids.append(rows.astype(np.int64)*32+slots)
+                        strength.append(np.full(len(rows),0.001*(0.8**age),np.float64))
+                if ids:
+                    unique,inverse=np.unique(np.concatenate(ids),return_inverse=True)
+                    delta=np.zeros(len(unique),np.float64)
+                    np.maximum.at(delta,inverse,np.concatenate(strength))
+                    # Keep total update magnitude bounded independent of burst size.
+                    delta *= min(1.,self.plasticity_budget/max(float(delta.sum()),1e-12))
+                    rows,slots=unique//32,unique%32
+                    old=self.w[rows,slots]
+                    new=(np.sign(old)*np.clip(np.abs(old)+sign*delta,0.001,0.25)).astype(np.float32)
+                    self.w[rows,slots]=new
+                    self.plasticity_l1 += float(np.abs(new-old).sum(dtype=np.float64))
+                    self.updates += int(np.count_nonzero(new!=old))
+            else:
+                for age,(rows,slots) in enumerate(reversed(self.eligibility)):
+                    if len(rows):
+                        old = self.w[rows,slots]
+                        new = np.sign(old)*np.clip(np.abs(old)+sign*0.001*(0.8**age),0.001,0.25)
+                        self.w[rows,slots] = new
+                        self.plasticity_l1 += float(np.abs(self.w[rows,slots]-old).sum(dtype=np.float64))
+                        self.updates += len(rows)
 
     def event(self, kind, data):
         # State persists across game episodes; metadata is not an input to the model.
@@ -228,7 +258,8 @@ class HQ200K:
     def telemetry(self):
         return {**self.metadata(),"steps":self.steps,"ticks":self.ticks,"spikes":self.spikes,
                 "plasticity_updates":self.updates,"feedback_events":self.feedback_events,
-                "input_pulses":self.input_pulses.tolist()}
+                "input_pulses":self.input_pulses.tolist(),"plasticity_l1":self.plasticity_l1,
+                "plasticity_events":self.plasticity_events}
 
     def close(self):
         print(json.dumps({"hq200k":self.telemetry()},sort_keys=True),flush=True)
@@ -239,14 +270,15 @@ def factory(topology_path, neurons, seed):
     if neurons!=N:
         raise ValueError("HQ200K requires 200000 resident neurons")
     cfg = json.loads(Path(topology_path).read_text())
-    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256","excitation_gain","inhibition_gain","stimulus_mode","adaptation_strength","adaptation_tau_ms"}:
+    if not isinstance(cfg,dict) or set(cfg)-{"plasticity","shuffled","expected_sha256","excitation_gain","inhibition_gain","stimulus_mode","adaptation_strength","adaptation_tau_ms","plasticity_mode","plasticity_budget"}:
         raise ValueError("unknown HQ200K config field")
     for key in ("plasticity","shuffled"):
         if key in cfg and type(cfg[key]) is not bool:
             raise ValueError("expected boolean config")
     brain = HQ200K(seed,cfg.get("plasticity",True),cfg.get("shuffled",False),
                    cfg.get("excitation_gain",1.),cfg.get("inhibition_gain",1.),cfg.get("stimulus_mode","single"),
-                   cfg.get("adaptation_strength",0.),cfg.get("adaptation_tau_ms",200.))
+                   cfg.get("adaptation_strength",0.),cfg.get("adaptation_tau_ms",200.),
+                   cfg.get("plasticity_mode","legacy"),cfg.get("plasticity_budget",2.))
     if cfg.get("expected_sha256") and cfg["expected_sha256"]!=brain.initial_hash:
         raise ValueError("topology hash mismatch")
     return brain

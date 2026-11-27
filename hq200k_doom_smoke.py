@@ -23,7 +23,7 @@ from hq200k_backend import HQ200K
 from training_server import PPOConfig, PPOTrainer
 
 
-def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32):
+def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stimulus_mode="single", adaptation_strength=0., episode_tics=128, rollout_steps=32, plasticity_mode="legacy", plasticity_budget=2.):
     if not (1<=batches<=16 and 128<=episode_tics<=4200 and 32<=rollout_steps<=256):
         raise ValueError("bounded experiment parameters required")
     output.mkdir(parents=True, exist_ok=False)
@@ -39,7 +39,7 @@ def run(arm, seed, output, batches, excitation_gain=1., inhibition_gain=1., stim
     text = re.sub(r"(?m)^episode_timeout\s*=.*$",f"episode_timeout = {episode_tics}",text)
     cfg.write_text(text)
     brain = HQ200K(seed, plasticity=arm!="frozen", shuffled=arm=="shuffled",
-                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode, adaptation_strength=adaptation_strength)
+                   excitation_gain=excitation_gain, inhibition_gain=inhibition_gain, stimulus_mode=stimulus_mode, adaptation_strength=adaptation_strength, plasticity_mode=plasticity_mode, plasticity_budget=plasticity_budget)
     args = SimpleNamespace(stim_port=12345,spike_port=12346,event_port=12347,
                            feedback_port=12348,max_steps=batches*(rollout_steps+episode_tics)+1,idle_timeout=30,
                            artifact_wait_ms=50,collect_window_ms=50)
@@ -141,6 +141,8 @@ if __name__=="__main__":
     p.add_argument("--adaptation-strength",type=float,default=0.)
     p.add_argument("--episode-tics",type=int,default=128)
     p.add_argument("--rollout-steps",type=int,default=32)
+    p.add_argument("--plasticity-mode",choices=("legacy","budgeted"),default="legacy")
+    p.add_argument("--plasticity-budget",type=float,default=2.)
     p.add_argument("--output",type=Path,required=True)
     a=p.parse_args()
-    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps)
+    run(a.arm,a.seed,a.output,a.batches,a.excitation_gain,a.inhibition_gain,a.stimulus_mode,a.adaptation_strength,a.episode_tics,a.rollout_steps,a.plasticity_mode,a.plasticity_budget)
